@@ -19,6 +19,13 @@ $font: 			'Fira Sans', sans-serif;
 		 -o-transition: all $time ease;
 			transition: all $time ease;
 }
+@mixin transform($w,$h){
+	-webkit-transform: translate($w,$h);
+	   -moz-transform: translate($w,$h);
+		-ms-transform: translate($w,$h);
+		 -o-transform: translate($w,$h);
+			transform: translate($w,$h);
+}
 
 /* MAIN 
 ======================== */
@@ -49,18 +56,15 @@ header{
 		padding: 0;
 		background: $bg-white;
 
-		.container{
-			padding: 0 !important;
-			display: flex;
-			justify-content: space-between;
-		}
-		.navbar-header{
-
-		}
 		.search{
+			position: absolute;
+			left: 50%;
 			padding-top: 8px;
-			width: 225px;
+			display: inline-block;
+			width: 235px;
+			@include transform(-50%,0);
 		}
+
 		.input-group{
 			span 	{border-radius: 25px 0 0 25px;}
 			input 	{border-radius: 25px;}
@@ -69,9 +73,7 @@ header{
 		a{
 			color: $dark-blue !important;
 
-			&:hover{
-				color: $main-blue;
-			}
+			&:hover 	{color: $main-blue;}
 		}
 	}
 }

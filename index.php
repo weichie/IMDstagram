@@ -20,7 +20,7 @@
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -28,13 +28,15 @@
 					</button>
 					<a class="navbar-brand" href="index.php">IMDstagram</a>
 				</div><!-- ./navbar-header -->
+				
 				<div class="search">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
 						<input type="text" class="form-control" placeholder="Search.." aria-describedby="basic-addon1">
 					</div>
 				</div><!-- ./search -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<div class="collapse navbar-collapse" id="menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#!"><i class="fa fa-heart"></i></a></li>
 						<li><a href="#!"><i class="fa fa-user"></i></a></li>
