@@ -23,9 +23,9 @@ a:hover {
 }
 
 .container {
-  padding-right: 0;
-  padding-left: 0;
-  width: 935px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
 }
 
 /* HEADER 
@@ -40,10 +40,10 @@ header .navbar {
 }
 header .navbar .search {
   position: absolute;
-  left: 50%;
   padding-top: 8px;
-  display: inline-block;
+  left: 50%;
   width: 235px;
+  display: none;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
@@ -65,6 +65,40 @@ header .navbar a:hover {
 
 /* CONTENT 
 ======================== */
+.post {
+  margin: 50px auto;
+  width: 350px;
+  border: 1px solid #ededed;
+}
+.post header {
+  background: #ffffff;
+  height: 60px;
+}
+.post header h5 {
+  padding: 10px 20px;
+  margin: 0;
+}
+.post header span {
+  color: #a5a7aa;
+  font-weight: 400;
+  margin-top: 12px;
+}
+.post header img {
+  margin-right: 10px;
+  max-width: 40px;
+  max-height: 40px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+.post .image {
+  background: url("https://static.pexels.com/photos/39493/animals-cat-girl-happiness-39493.jpeg");
+  background-size: cover;
+  height: 350px;
+}
+
 /* FOOTER 
 ======================== */
 footer {
@@ -77,18 +111,43 @@ footer ul {
   padding: 0;
   list-style-type: none;
   display: flex;
-  width: 70%;
+  flex-direction: column;
+  width: 100%;
 }
 footer ul a {
   display: block;
   padding: 5px 10px;
 }
 footer .copyright {
-  margin-top: 5px;
-  float: right;
+  text-align: center;
 }
 
 /* RESPONSIVE 
 ======================== */
-/* ANIMATION 
-======================== */
+@media only screen and (min-width: 950px) {
+  .container {
+    padding-right: 0;
+    padding-left: 0;
+    width: 935px;
+  }
+
+  header .navbar .search {
+    display: inline-block;
+  }
+
+  .post {
+    width: 600px;
+  }
+  .post .image {
+    height: 600px;
+  }
+
+  footer ul {
+    flex-direction: row;
+    width: 70%;
+  }
+  footer .copyright {
+    margin-top: -30px;
+    float: right;
+  }
+}

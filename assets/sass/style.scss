@@ -6,6 +6,7 @@ $dark-blue: 	#004879;
 $dark-grey: 	#a5a7aa;
 $font-color: 	#000000;
 $light-blue: 	#4090db;
+$light-grey: 	#ededed;
 $main-blue: 	#125688;
 
 $font: 			'Fira Sans', sans-serif;
@@ -26,6 +27,13 @@ $font: 			'Fira Sans', sans-serif;
 		 -o-transform: translate($w,$h);
 			transform: translate($w,$h);
 }
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
+}
 
 /* MAIN 
 ======================== */
@@ -41,9 +49,9 @@ a{
 	&:hover 	{color: $light-blue;}
 }
 .container{
-	padding-right: 0;
-	padding-left: 0;
-	width: 935px;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 100%;
 }
 
 /* HEADER 
@@ -58,10 +66,10 @@ header{
 
 		.search{
 			position: absolute;
-			left: 50%;
 			padding-top: 8px;
-			display: inline-block;
+			left: 50%;
 			width: 235px;
+			display: none;
 			@include transform(-50%,0);
 		}
 
@@ -80,7 +88,40 @@ header{
 
 /* CONTENT 
 ======================== */
+.post{
+	margin: 50px auto;
+	width: 350px;
+	border: 1px solid $light-grey;
 
+	header{
+		background: $bg-white;
+		height: 60px;
+
+		h5{
+			padding: 10px 20px;
+			margin: 0;
+		}
+
+		span{
+			color: $dark-grey;
+			font-weight: 400;
+			margin-top: 12px;
+		}
+
+		img{
+			margin-right: 10px;
+			max-width: 40px;
+			max-height: 40px;
+			@include border-radius(50%);
+		}
+	}
+
+	.image{
+		background: url('https://static.pexels.com/photos/39493/animals-cat-girl-happiness-39493.jpeg');
+		background-size: cover;
+		height: 350px;
+	}
+}
 /* FOOTER 
 ======================== */
 footer{
@@ -93,20 +134,18 @@ footer{
 		padding: 0;
 		list-style-type: none;
 		display: flex;
-		width: 70%;
-
+		flex-direction: column;
+		width: 100%;
+		
 		a{
 			display: block;
 			padding: 5px 10px;
 		}
 	}
-	.copyright{
-		margin-top: 5px;
-		float: right;
-	}
+
+	.copyright 	 	{text-align: center;}
 }
+
 /* RESPONSIVE 
 ======================== */
-
-/* ANIMATION 
-======================== */
+@import 'responsive.scss';
