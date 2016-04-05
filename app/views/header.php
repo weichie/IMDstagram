@@ -1,17 +1,3 @@
-<?php
-include 'app/app.php';
-
-/*if( isset($_POST['upload']) ){
-	try {
-		print_r($_FILES['userfile']['name']);
-		$app->upload( $_FILES['userfile'] );
-	} catch (Exception $e){
-		print_r($e);
-	}
-}*/
-
-
-?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -19,7 +5,7 @@ include 'app/app.php';
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Page</title>
+	<title>IMDStagram<?=(isset($title)) ? ' | ' . $title : '';?></title>
 
 	<!-- Stlyezz - You need a sass-compiler -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -61,8 +47,3 @@ include 'app/app.php';
 	</header>
 	
 	<div class="content container">
-
-	<form action="upload.php" method="post" enctype="multipart/form-data">
-	Your Photo: <input type="file" name="userfile" size="25" />
-	<input type="submit" name="submit" value="Submit" />
-</form>

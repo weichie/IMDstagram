@@ -1,5 +1,5 @@
-<?php include_once('header.php'); ?>
+<?php
 
-<?php include_once('app/views/login.php'); ?>
+include 'app/app.php';
 
-<?php include_once('footer.php'); ?>
+?>

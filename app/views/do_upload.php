@@ -1,6 +1,4 @@
 <?php
-include 'app/app.php';
-
 if( isset($_FILES['userfile']['name']) ){
 	try {
 		print_r($_FILES['userfile']['name']);
@@ -12,5 +10,4 @@ if( isset($_FILES['userfile']['name']) ){
 		print_r($e);
 	}
 }
-
 ?>
