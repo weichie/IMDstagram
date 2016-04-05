@@ -21,11 +21,6 @@ if(isset($_POST['login'])){
 	$app->login($_POST['email'], $_POST['password']);
 }
 
-// Logout
-if(isset($_GET['logout'])){
-	$app->logout();
-}
-
 // Secure pages
 $app->auth($_GET['p'], 
 	array(
