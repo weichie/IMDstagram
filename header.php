@@ -1,3 +1,6 @@
+<?php
+include 'app/app.php';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
