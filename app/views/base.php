@@ -17,12 +17,13 @@ include_once('header.php');
 
 // Page system
 if( isset($_GET['p']) ){
-	$file = $_GET['p'].'.php';
-	if( file_exists( $file ) ){
-		include $file;
-	} else {
+	// Later voor security checken
+	/*$file = $_GET['p'].'.php';
+	if( file_exists( $file ) ){*/
+		include $_GET['p'].'.php';
+	/*} else {
 		include 'login.php';
-	}
+	}*/
 } else {
 	include 'login.php';
 }
