@@ -28,6 +28,24 @@
 				}
 			}
 		}
+
+		public function login($email, $password){
+			global $db;
+			$query = "SELECT email, password FROM users WHERE email='$email'";
+			$qry = $db->query($query);
+			$result = $qry->fetch_assoc();
+
+			if($qry->num_rows == 1){
+				if(password_verify($password, $result['password'])){
+					$_SESSION['logged'] = true;
+					header('Location: index.php');
+				}else{
+					echo 'Aanmelden niet gelukt, probeer het opnieuw';
+				}
+			}else{
+				echo 'het opgegeven email adres werd niet gevonden...';
+			}
+		}
 		
 	}
 
