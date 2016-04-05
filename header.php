@@ -1,5 +1,16 @@
 <?php
 include 'app/app.php';
+
+/*if( isset($_POST['upload']) ){
+	try {
+		print_r($_FILES['userfile']['name']);
+		$app->upload( $_FILES['userfile'] );
+	} catch (Exception $e){
+		print_r($e);
+	}
+}*/
+
+
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -50,3 +61,8 @@ include 'app/app.php';
 	</header>
 	
 	<div class="content container">
+
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+	Your Photo: <input type="file" name="userfile" size="25" />
+	<input type="submit" name="submit" value="Submit" />
+</form>
