@@ -2,6 +2,8 @@
 ob_start();
 $db = new mysqli('localhost', 'root', 'root', 'imdstagram');
 
+define('SITE_URL', '/imdstagram');
+
 // Autoload
 spl_autoload_register(function ($class_name) {
     include 'classes/'.$class_name . '.class.php';
