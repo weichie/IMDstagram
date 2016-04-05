@@ -18,7 +18,7 @@
 			$qry = $db->query($controle);
 			$result = $qry->fetch_assoc();
 
-			if($qru->num_rows == 1){
+			if($qry->num_rows == 1){
 				echo 'Dit email adres wordt al gebruikt...';
 			}else{
 				if($db->query($query) === TRUE){
@@ -31,13 +31,15 @@
 
 		public function login($email, $password){
 			global $db;
-			$query = "SELECT email, password FROM users WHERE email='$email'";
+			$query = "SELECT id, username, email, password FROM users WHERE email='$email'";
 			$qry = $db->query($query);
 			$result = $qry->fetch_assoc();
 
 			if($qry->num_rows == 1){
 				if(password_verify($password, $result['password'])){
 					$_SESSION['logged'] = true;
+					$_SESSION['userID'] = $result['id'];
+					$_SESSION['username'] = $result['username'];
 					header('Location: index.php');
 				}else{
 					echo 'Aanmelden niet gelukt, probeer het opnieuw';
@@ -45,6 +47,26 @@
 			}else{
 				echo 'het opgegeven email adres werd niet gevonden...';
 			}
+		}
+
+		public function auth($page, $secure_pages){
+
+			if( in_array($page, $secure_pages) ){
+
+				if( !isset($_SESSION['logged']) ){
+					session_destroy();
+					header('Location: '.SITE_URL);
+					exit;
+				}
+
+			}
+
+		}
+
+		public function logout(){
+			session_destroy();
+			header('Location:'.SITE_URL);
+			exit;
 		}
 		
 	}

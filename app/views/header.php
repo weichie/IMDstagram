@@ -8,9 +8,9 @@
 	<title>IMDStagram<?=(isset($title)) ? ' | ' . $title : '';?></title>
 
 	<!-- Stlyezz - You need a sass-compiler -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/style.min.css">
+	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/style.min.css">
 
 	<!-- Fontzz -->
 	<link href='https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500' rel='stylesheet' type='text/css'>
