@@ -99,6 +99,82 @@ header .navbar a:hover {
   height: 350px;
 }
 
+.acc-details {
+  display: flex;
+  padding: 50px 0;
+}
+.acc-details .pic {
+  text-align: center;
+  align-self: center;
+}
+.acc-details .pic img {
+  width: 55%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+.acc-details .bio h4 {
+  display: flex;
+  font-weight: 300;
+  font-size: 1.8em;
+  text-transform: lowercase;
+}
+.acc-details .bio h4 a {
+  align-self: center;
+  display: inline-block;
+  margin-left: 15px;
+  border: 1px solid #a5a7aa;
+  padding: 8px 15px;
+  color: #a5a7aa;
+  font-weight: 400;
+  font-size: 0.4em;
+  text-transform: uppercase;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.acc-details .bio p {
+  font-weight: 300;
+}
+.acc-details .bio a {
+  font-weight: 400;
+}
+.acc-details .bio ul {
+  list-style-type: none;
+  padding: 0;
+}
+.acc-details .bio ul li {
+  display: inline-block;
+  margin-right: 25px;
+}
+.acc-details .bio ul li strong {
+  font-size: 1.2em;
+}
+
+.acc-uploads {
+  margin-top: 50px;
+}
+.acc-uploads ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.acc-uploads ul li {
+  margin-bottom: 25px;
+  width: 290px;
+  height: 290px;
+}
+.acc-uploads ul li img {
+  width: 100%;
+  height: 100%;
+}
+
 /* FOOTER 
 ======================== */
 footer {

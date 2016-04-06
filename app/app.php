@@ -3,7 +3,7 @@ ob_start();
 session_start();
 $db = new mysqli('localhost', 'root', 'root', 'imdstagram');
 
-include 'config.php';
+include 'config/config.php';
 
 // Autoload
 spl_autoload_register(function ($class_name) {

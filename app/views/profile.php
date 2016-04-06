@@ -19,13 +19,35 @@
 
 <section class="acc-uploads">
 	<ul>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
+		<li>
+			<a href="#">
+				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			</a>
+		</li>
 	</ul>
 </section>

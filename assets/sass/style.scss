@@ -122,6 +122,83 @@ header{
 		height: 350px;
 	}
 }
+
+.acc-details{
+	display: flex;
+	padding: 50px 0;
+
+	.pic{
+		text-align: center;
+		align-self: center;
+
+		img{
+			width: 55%;
+			@include border-radius(50%);
+		}
+	}
+
+	.bio{
+
+		h4{
+			display: flex;
+			font-weight: 300;
+			font-size: 1.8em;
+			text-transform: lowercase;
+
+			a{
+				align-self: center;
+				display: inline-block;
+				margin-left: 15px;
+				border: 1px solid $dark-grey;
+				padding: 8px 15px;
+				color: $dark-grey;
+				font-weight: 400;
+				font-size: 0.4em;
+				text-transform: uppercase;
+				@include border-radius(5px);
+			}
+		}
+
+		p 	{font-weight: 300;}
+		a 	{font-weight: 400;}
+
+		ul{
+			list-style-type: none;
+			padding: 0;
+
+			li{
+				display: inline-block;
+				margin-right: 25px;
+
+				strong 	{font-size: 1.2em;}
+			}
+		}
+	}
+}
+
+.acc-uploads{
+	margin-top: 50px;
+
+	ul{
+		list-style-type: none;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		li{
+			margin-bottom: 25px;
+			width: 290px;
+			height: 290px;
+
+			img{
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}
+
 /* FOOTER 
 ======================== */
 footer{
