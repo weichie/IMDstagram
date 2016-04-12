@@ -122,7 +122,14 @@ header{
 		height: 350px;
 	}
 }
+.login-form{
+	margin: 50px auto;
+	width: 50%;
 
+	button{
+		margin-bottom: 10px;
+	}
+}
 .acc-details{
 	display: flex;
 	padding: 50px 0;
