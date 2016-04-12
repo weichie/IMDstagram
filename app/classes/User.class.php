@@ -32,7 +32,7 @@
 		public function update_user($email, $name, $username, $site, $bio){
 			global $db;
 
-			$query = "UPDATE users SET name=".$name.", username=".$username.", bio=".$bio.", url=".$site.", email=".$email." WHERE id=".$_SESSION['userID'].";";
+			$query = "UPDATE users SET name='".$name."', username='".$username."', bio='".$bio."', url='".$site."', email='".$email."' WHERE id=".$_SESSION['userID'].";";
 
 			$controle = "SELECT id FROM users WHERE id=".$_SESSION['userID']."";
 			echo $controle;
@@ -40,10 +40,10 @@
 			$result = $qry->fetch_assoc();
 
 			if($qry->num_rows == 1){
-				if($db->query($query) === TRUE){
+				if($db->query($query)){
 					echo "Uw account werd succesvol geupdate";
 				}else{
-					echo "Error: " . $query . "<br>" . $conn->error;
+					echo "Error: " . $query . "<br>" . $db->error;
 				}
 			}
 
