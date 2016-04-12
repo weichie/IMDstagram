@@ -29,6 +29,33 @@
 			}
 		}
 
+		public function update_user($email, $name, $username, $site, $bio){
+			global $db;
+
+			$query = "UPDATE users SET name=".$name.", username=".$username.", bio=".$bio.", url=".$site.", email=".$email." WHERE id=".$_SESSION['userID'].";";
+
+			$controle = "SELECT id FROM users WHERE id=".$_SESSION['userID']."";
+			echo $controle;
+			$qry = $db->query($controle);
+			$result = $qry->fetch_assoc();
+
+			if($qry->num_rows == 1){
+				if($db->query($query) === TRUE){
+					echo "Uw account werd succesvol geupdate";
+				}else{
+					echo "Error: " . $query . "<br>" . $conn->error;
+				}
+			}
+
+			/*
+			if ($conn->query($query) === TRUE) {
+				echo "Uw account is succesvol geupdate!";
+			} else {
+				echo "Error updating record: " . $conn->error;
+			}
+			*/
+		}
+
 		public function login($email, $password){
 			global $db;
 			$query = "SELECT id, username, email, password FROM users WHERE email='$email'";

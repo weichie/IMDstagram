@@ -20,6 +20,9 @@ if(isset($_POST['register'])){
 if(isset($_POST['login'])){
 	$app->login($_POST['email'], $_POST['password']);
 }
+if(isset($_POST['update'])){
+	$app->update_user($_POST['email'], $_POST['name'], $_POST['username'], $_POST['site'], $_POST['bio']);
+}
 
 // Secure pages
 $app->auth($_GET['p'], 
