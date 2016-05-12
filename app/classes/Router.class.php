@@ -27,6 +27,8 @@ class Router {
 					$ctrl = $route_[0].'Controller';
 					$controller = new $ctrl($this->app);
 					$controller->$route_[1]();
+				} else {
+					$this->index();
 				}
 
 			} else {
@@ -36,13 +38,16 @@ class Router {
 			}
 
 		} else {
+			$this->index();
+		}
+	}
 
-			if( $this->app->isLoggedIn() ){
-				header('Location: ' . SITE_URL . '/?route=user/profile');
-			} else {
-				$controller = new UserController($this->app);
-				$controller->login();
-			}
+	public function index(){
+		if( $this->app->isLoggedIn() ){
+			header('Location: ' . SITE_URL . '/?route=user/profile');
+		} else {
+			$controller = new UserController($this->app);
+			$controller->login();
 		}
 	}
 }

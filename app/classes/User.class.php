@@ -104,14 +104,19 @@
 			}
 		}
 
-		public function auth($route, $secure_route){
+		public function auth($route, $secure_route, $redirect = false){
 
 			if( in_array($route, $secure_route) ){
 
 				if( !isset($_SESSION['logged']) ){
 					session_destroy();
-					header('Location: '.SITE_URL);
-					exit;
+
+					if( $redirect ){
+						header('Location: '.SITE_URL);
+						exit;
+					} else {
+						return false;
+					}
 				} else {
 					// Set our username and userid inside class, so we can access it instead of via Session
 					$this->setUserID( $_SESSION['userID'] );
@@ -120,6 +125,10 @@
 					return true;
 				}
 
+			} else {
+
+				// Not protected
+				return true;
 			}
 
 		}

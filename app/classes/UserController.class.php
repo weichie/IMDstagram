@@ -87,5 +87,16 @@ class UserController {
 		$this->app->view('edit_profile');
 
 	}
+
+	public function search(){
+
+		$q = htmlentities($_GET['q'], ENT_QUOTES);
+
+		$this->app->view('search', array(
+				'q' => $q
+			)
+		);
+
+	}
 	
 }
