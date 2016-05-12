@@ -26,6 +26,15 @@
 			return $this->username;
 		}
 
+		public function getBio(){
+
+			$query = $this->db->query('SELECT * FROM users WHERE id="'.$this->getUserID().'"');
+			$bio = $query->fetch_assoc();
+
+			return $bio;
+
+		}
+
 		public function registration($email, $password){
 			global $db;
 
@@ -59,7 +68,7 @@
 			$query = "UPDATE users SET name='".$name."', username='".$username."', bio='".$bio."', url='".$site."', email='".$email."' WHERE id=".$_SESSION['userID'].";";
 
 			$controle = "SELECT id FROM users WHERE id=".$_SESSION['userID']."";
-			echo $controle;
+			//echo $controle;
 			$qry = $db->query($controle);
 			$result = $qry->fetch_assoc();
 
