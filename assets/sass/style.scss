@@ -53,6 +53,46 @@ a{
 	padding-left: 15px;
 	width: 100%;
 }
+h3{
+	font-weight: 300;
+	font-size: 2.5em;
+}
+h4{
+	margin-top: 30px;
+	font-weight: 300;
+	font-size: 1.8em;
+}
+
+.upload-btn{
+	margin-bottom: 10px;
+	color: $light-blue;
+	display: block;
+}
+.upload-txt{
+	outline: none !important;
+	padding: 5px;
+	width: 350px;
+	border: 1px solid $dark-grey;
+	font-weight: 300;
+
+	&:focus{
+		border: 1px solid $light-blue;
+	}
+}
+.post_img_button{
+	background: none;
+	border: 1px solid $dark-grey;
+	color: $dark-grey;
+	padding: 10px 25px;
+	font-weight: 300;
+	@include transition(0.4s);
+
+	&:hover{
+		background: $dark-blue;
+		border-color: $dark-blue;
+		color: #fff;
+	}
+}
 
 /* HEADER 
 ======================== */
@@ -208,6 +248,32 @@ header{
 
 .acc-update{
 
+}
+
+.select-filter{
+	list-style-type: none;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	li{
+		margin-bottom: 20px;
+		width: 23%;
+		height: 150px;
+
+		figure{
+			width: 100%;
+			height: 125px;
+			display: inline-block; 
+			text-align: center;
+
+			img{
+				width: 100%;
+				max-height: 125px;
+			}
+		}
+	}
 }
 
 /* FOOTER 

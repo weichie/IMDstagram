@@ -1,6 +1,6 @@
 
 <?php if( !isset($picture) ): ?>
-<h3>Klik op de plus om een foto toe te voegen :D</h3>
+<h3>Selecteer een foto</h3>
 <?php else: ?>
 <h3>Voeg een beschrijving en een filter toe aan je foto</h3>
 <?php endif; ?>
@@ -13,40 +13,43 @@
 <?php endif; ?>
 
 <?php if( !isset($picture) ): ?>
-<i class="fa fa-plus-circle"></i>
-<input type="file" name="userfile_post" size="25" style="position: absolute; left: -5000px;" />
-<input type="hidden" name="type" value="post">
+	<span class="upload-btn"><i class="fa fa-plus-circle"></i> Selecteer een foto</span>
+	<input type="file" name="userfile_post" size="25" style="position: absolute; left: -5000px;" />
+	<input type="hidden" name="type" value="post">
+	
+	<button class="post_img_button" type="submit"> Uploaden </button>
 <?php else: ?>
 
 <figure id="baseImage" style="max-width:200px">
-<img src="<?=$picture?>" style="max-width:200px">
+	<img src="<?=$picture?>" style="max-width:200px">
 </figure>
 
 <?php endif; ?>
 
 <?php if( isset($id) ): ?>
-<input type="hidden" value="<?=$id?>" name="post_id">
+	<input type="hidden" value="<?=$id?>" name="post_id">
 <?php endif; ?>
 
 <?php if( isset($picture) ): ?>
 <h4>Selecteer een filter</h4>
 
-<p>
+<ul class="select-filter">
 	<?php
-	foreach( array('nofilter', 'rise', 'mayfair', 'inkwell', 'earlybird','_1977','aden') as $id => $filter ):
+	foreach( array('nofilter', 'rise', 'mayfair', 'xpro2', 'inkwell', 'earlybird','_1977','aden') as $id => $filter ):
 	?>
-	
-	<figure class="<?=$filter?>" style="display: inline-block; text-align: center;">
-	<img src="<?=$picture?>" class="smallImage" style="max-width:100px">
-	<br>
-	<input type="radio" <?=($id==0)?'checked="checked"':'';?> name="filter" value="<?=$filter?>">
-	</figure>
+	<li>
+		<figure class="<?=$filter?>">
+			<img src="<?=$picture?>" class="smallImage"><br>
+			<input type="radio" <?=($id==0)?'checked="checked"':'';?> name="filter" value="<?=$filter?>">
+		</figure>
+	</li>
 	<?php endforeach; ?>
-</p>
+</ul>
+
+<textarea name="beschrijving" class="upload-txt" rows="5" placeholder="Vertel wat meer over je foto"></textarea>
+<br>
+<button class="post_img_button" type="submit"> Afbeelding plaatsen </button>
 <?php endif; ?>
 
-<textarea name="beschrijving" placeholder="Vertel wat meer over je foto"></textarea>
-<br>
 
-<button class="post_img_button" type="submit"> Afbeelding plaatsen </button>
 </form>
