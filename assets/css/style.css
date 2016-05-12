@@ -88,13 +88,30 @@ header .navbar .search {
   position: absolute;
   padding-top: 8px;
   left: 50%;
-  width: 235px;
+  width: 270 px;
   display: none;
   -webkit-transform: translate(-50%, 0);
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
   -o-transform: translate(-50%, 0);
   transform: translate(-50%, 0);
+}
+header .navbar .search form {
+  display: flex;
+}
+header .navbar .search form .input-group-addon {
+  padding-top: 8px;
+  width: 35px;
+}
+header .navbar .search form .btn-search {
+  background: #004879;
+  color: #fff;
+  border: none;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight: 300;
+  border-color: #004879;
+  border-radius: 0 25px 25px 0;
 }
 header .navbar .input-group span {
   border-radius: 25px 0 0 25px;
@@ -192,8 +209,12 @@ header .navbar a:hover {
   text-align: center;
   align-self: center;
 }
-.acc-details .pic img {
-  width: 55%;
+.acc-details .pic .img {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 150px;
+  height: 150px;
+  background-size: cover !important;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;

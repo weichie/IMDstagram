@@ -1,6 +1,6 @@
 <section class="acc-details">
 	<div class="col-xs-12 col-sm-4 pic">
-		<img src="<?=$bio['avatar']?>">
+		<div class="img" style="background:url('<?=$bio['avatar']?>') no-repeat;"></div>
 	</div><!-- ./picture -->
 	<div class="col-xs-12 col-sm-8 bio">
 		<h4><?=htmlentities($bio['username'])?> 
