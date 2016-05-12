@@ -39,6 +39,10 @@
 
 		public function search($q){
 
+			if( empty($q) ){
+				return $results = array();
+			}
+
 			$query_posts = $this->db->query('SELECT DISTINCT * FROM posts WHERE description LIKE "%'.$this->db->real_escape_string($q).'%"');
 			$query_users = $this->db->query('SELECT DISTINCT * FROM users WHERE username LIKE "%'.$this->db->real_escape_string($q).'%"');
 
