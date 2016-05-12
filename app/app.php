@@ -21,7 +21,8 @@ $router = new Router( $app, array(
 		'user/profile',
 		'user/post',
 		'user/feed',
-		'user/do_upload'
+		'user/do_upload',
+		'user/edit_profile'
 	)
 );
 

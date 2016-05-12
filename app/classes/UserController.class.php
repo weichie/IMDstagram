@@ -24,9 +24,11 @@ class UserController {
 	public function profile(){
 
 		$posts = $this->app->getPosts();
+		$bio = $this->app->getBio();
 
 		$this->app->view('profile', array(
-				'posts' => $posts
+				'posts' => $posts,
+				'bio' => $bio,
 			)
 		);
 
@@ -84,7 +86,26 @@ class UserController {
 
 	public function edit_profile(){
 
-		$this->app->view('edit_profile');
+		if(isset($_POST['update'])){
+			$update_message = $this->app->update_user($_POST['email'], $_POST['name'], $_POST['username'], $_POST['site'], $_POST['bio']);
+		
+			$bio = $this->app->getBio();
+
+			$this->app->view('edit_profile', array(
+					'update_message' => $update_message,
+					'bio' => $bio
+				)
+			);
+		} else {
+
+			$bio = $this->app->getBio();
+
+			$this->app->view('edit_profile', array(
+					'bio' => $bio
+				)
+			);
+
+		}
 
 	}
 
