@@ -144,6 +144,37 @@ header .navbar a:hover {
   background-size: cover;
   height: 350px;
 }
+.post .bottom {
+  background: #fff;
+  padding: 20px;
+  height: auto;
+}
+.post .bottom .reacties p {
+  font-weight: 300;
+}
+.post .bottom .reacties ul {
+  list-style-type: none;
+  padding: 0;
+}
+.post .bottom .reacties ul li {
+  font-weight: 300;
+}
+.post .bottom .reageren {
+  padding-top: 10px;
+  border-top: 1px solid #ededed;
+  display: flex;
+}
+.post .bottom .reageren i {
+  font-size: 2em;
+  margin-right: 10px;
+}
+.post .bottom .reageren .reactie-plaatsen {
+  display: inline-block;
+  font-weight: 300;
+  width: 100%;
+  border: none;
+  outline: none !important;
+}
 
 .login-form {
   margin: 50px auto;

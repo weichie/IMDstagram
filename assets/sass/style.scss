@@ -161,6 +161,43 @@ header{
 		background-size: cover;
 		height: 350px;
 	}
+
+	.bottom{
+		background: #fff;
+		padding: 20px;
+		height: auto;
+		
+		.reacties{
+			p{
+				font-weight: 300;
+			}
+			ul{
+				list-style-type: none;
+				padding: 0;
+				li{
+					font-weight: 300;
+				}
+			}
+		}
+
+		.reageren{
+			padding-top: 10px;
+			border-top: 1px solid $light-grey;
+			display: flex;
+
+			i{
+				font-size: 2em;
+				margin-right: 10px;
+			}
+			.reactie-plaatsen{
+				display: inline-block;
+				font-weight: 300;
+				width: 100%;
+				border: none;
+				outline: none !important;
+			}
+		}
+	}
 }
 .login-form{
 	margin: 50px auto;
