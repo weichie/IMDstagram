@@ -19,35 +19,22 @@
 
 <section class="acc-uploads">
 	<ul>
+		<?php
+		if( empty($posts) ):
+		?>
+
+		<?php else: ?>
+
+		<?php foreach($posts as $post): ?>
 		<li>
-			<a href="#">
-				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
+			<a href="<?=SITE_URL?>/?route=user/view_post&id=<?=$post['id']?>">
+				<figure class="<?=$post['filter']?>">
+				<img src="<?=$post['image_url']?>" alt="" />
+				</figure>
 			</a>
 		</li>
-		<li>
-			<a href="#">
-				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
-			</a>
-		</li>
-		<li>
-			<a href="#">
-				<img src="https://static.pexels.com/photos/37839/pexels-photo-37839.jpeg" alt="" />
-			</a>
-		</li>
+		<?php endforeach; ?>
+		
+		<?php endif; ?>
 	</ul>
 </section>

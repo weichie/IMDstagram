@@ -23,7 +23,12 @@ class UserController {
 
 	public function profile(){
 
-		$this->app->view('profile');
+		$posts = $this->app->getPosts();
+
+		$this->app->view('profile', array(
+				'posts' => $posts
+			)
+		);
 
 	}
 
@@ -37,21 +42,37 @@ class UserController {
 
 		if( isset($_GET['id']) ){
 
+			// Misschien moet die een Picture functie zijn? 
+			// Picture object returnen 
 			$getPicture = $this->app->db->query('SELECT * FROM posts WHERE id="'.$_GET['id'].'"');
 			if( $getPicture ){
 
 				$getPicture = $getPicture->fetch_assoc();
-				$picture = $getPicture['image_url'];
+				$picture 	= $getPicture['image_url'];
+				$id 		= $getPicture['id'];
 
+			}
+
+			// Give our view the picture :)
+			$this->app->view('post', array(
+					'picture' => $picture,
+					'id' => $id
+				)
+			);
+
+		}
+
+		if( isset($_POST['post_id']) ){
+			
+			$post = $this->app->post( $_POST['post_id'], $_POST['beschrijving'], $_POST['filter'] );
+
+			if( $post ){
+				header('Location: ' . SITE_URL . '/?route=user/profile');
 			}
 
 		}
 
-		// Give our view the picture :)
-		$this->app->view('post', array(
-				'picture' => $picture,
-			)
-		);
+		$this->app->view('post');
 
 	}
 

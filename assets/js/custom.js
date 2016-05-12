@@ -6,4 +6,9 @@ $(document).ready(function(){
 		$('input[name="userfile_post"]').trigger('click');
 	});
 	/*************/
+
+	$('input[name="filter"]').on('change', function(){
+		$('#baseImage').removeClass()
+		$('#baseImage').addClass($(this).val());
+	});
 });
