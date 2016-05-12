@@ -1,7 +1,7 @@
 <?php
 
-// Title
-if( isset($_GET['p']) ){
+// Title OLD
+/*if( isset($_GET['p']) ){
 	switch($_GET['p']){
 		case 'login':
 			$title = 'Login';
@@ -10,23 +10,37 @@ if( isset($_GET['p']) ){
 			$title = 'Register';
 		break;
 	}
-}
+}*/
+
+// Normally we would get the title as a $title param
 
 // Header
-include_once('header.php');
+if( !isset($remove_header) ) {
+	include_once('header.php');
+}
 
-// Page system
-if( isset($_GET['p']) ){
+// Page system OLD
+/*if( isset($_GET['p']) ){
 	// Later voor security checken
 	/*$file = $_GET['p'].'.php';
 	if( file_exists( $file ) ){*/
-		include $_GET['p'].'.php';
+		//include $_GET['p'].'.php';
 	/*} else {
 		include 'login.php';
-	}*/
+	}*//*
 } else {
 	include 'login.php';
+}*/
+
+// New Page System => Router
+// We get the $view parameter here
+if( isset($view) ){
+
+	include $view.'.php';
+
 }
 
 // Footer
-include_once('footer.php');
+if( !isset($remove_footer) ) {
+	include_once('footer.php');
+}

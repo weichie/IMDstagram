@@ -7,31 +7,19 @@ include 'config/config.php';
 
 // Autoload
 spl_autoload_register(function ($class_name) {
-    include 'classes/'.$class_name . '.class.php';
+	include 'classes/'.$class_name . '.class.php';
 });
 
 // Start our app
-$app = new User;
+$app = new User($db);
 
 // Logic
-if(isset($_POST['register'])){
-	$app->registration($_POST['email'], $_POST['password']);
-}
-if(isset($_POST['login'])){
-	$app->login($_POST['email'], $_POST['password']);
-}
-if(isset($_POST['update'])){
-	$app->update_user($_POST['email'], $_POST['name'], $_POST['username'], $_POST['site'], $_POST['bio']);
-}
+include 'logic.php';
 
-// Secure pages
-$app->auth($_GET['p'], 
-	array(
-		'profile'
-	)
-);
+// We feed it our $app
+$router = new Router( $app );
 
 // Load base view.
-include 'views/base.php';
+/*include 'views/base.php';*/
 
 ?>

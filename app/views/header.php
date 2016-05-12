@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/style.min.css">
+	<link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
 
 	<!-- Fontzz -->
 	<link href='https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500' rel='stylesheet' type='text/css'>
@@ -38,6 +39,7 @@
 
 				<div class="collapse navbar-collapse" id="menu">
 					<ul class="nav navbar-nav navbar-right">
+						<li><a href="<?=SITE_URL?>/?p=post"><i class="fa fa-pencil-square-o"></i></a></li>
 						<li><a href="#!"><i class="fa fa-heart"></i></a></li>
 						<li><a href="#!"><i class="fa fa-user"></i></a></li>
 					</ul>

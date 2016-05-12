@@ -1,3 +1,9 @@
+<?php if( isset($login_message) ): ?>
+<div class="alert alert-warning">
+	<?= $login_message ?>	
+</div>
+<?php endif; ?>
+
 <form action="" method="post" class="login-form">
 	<div class="form-group">
 		<label for="email">Email</label>

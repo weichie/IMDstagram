@@ -2,6 +2,30 @@
 
 	class User extends Post {
 
+		protected $userID;
+		protected $username;
+		public static $db;
+
+		public function __contruct($db){
+			$this->db = $db;
+		}
+
+		public function setUserID($id){
+			$this->userID = $id;
+		}
+
+		public function setUsername($username){
+			$this->username = $username;
+		}
+
+		public function getUserID(){
+			return $this->userID;
+		}
+
+		public function getUsername(){
+			return $this->username;
+		}
+
 		public function registration($email, $password){
 			global $db;
 
@@ -19,12 +43,12 @@
 			$result = $qry->fetch_assoc();
 
 			if($qry->num_rows == 1){
-				echo 'Dit email adres wordt al gebruikt...';
+				return 'Dit email adres wordt al gebruikt...';
 			}else{
 				if($db->query($query) === TRUE){
-					echo "U bent succesvol geregistreerd<br>U kan vanaf nu aanmelden op uw account";
+					return "U bent succesvol geregistreerd<br>U kan vanaf nu aanmelden op uw account";
 				}else{
-					echo "Error: " . $query . "<br>" . $conn->error;
+					return "Error: " . $query . "<br>" . $conn->error;
 				}
 			}
 		}
@@ -41,9 +65,9 @@
 
 			if($qry->num_rows == 1){
 				if($db->query($query)){
-					echo "Uw account werd succesvol geupdate";
+					return "Uw account werd succesvol geupdate";
 				}else{
-					echo "Error: " . $query . "<br>" . $db->error;
+					return "Error: " . $query . "<br>" . $db->error;
 				}
 			}
 
@@ -67,12 +91,16 @@
 					$_SESSION['logged'] = true;
 					$_SESSION['userID'] = $result['id'];
 					$_SESSION['username'] = $result['username'];
+
+					$this->setUserID($result['id']);
+					$this->setUsername($result['username']);
+
 					header('Location: index.php');
 				}else{
-					echo 'Aanmelden niet gelukt, probeer het opnieuw';
+					return 'Aanmelden niet gelukt, probeer het opnieuw';
 				}
 			}else{
-				echo 'het opgegeven email adres werd niet gevonden...';
+				return 'het opgegeven email adres werd niet gevonden...';
 			}
 		}
 
@@ -84,6 +112,10 @@
 					session_destroy();
 					header('Location: '.SITE_URL);
 					exit;
+				} else {
+					// Set our username and userid inside class, so we can access it instead of via Session
+					$this->setUserID( $_SESSION['userID'] );
+					$this->setUsername( $_SESSION['username'] );
 				}
 
 			}
