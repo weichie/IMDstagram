@@ -34,8 +34,37 @@
 		}
 
 		public function getFeed(){
+			// Get all posts from the ones you follow
+		}
+
+		public function search($q){
+
+			$query_posts = $this->db->query('SELECT DISTINCT * FROM users WHERE description LIKE "%test%"');
+			$query_users = $this->db->query('SELECT DISTINCT * FROM users WHERE username LIKE "%test%"');
+
+			$results = array();
+
+			if( $query_posts->num_rows > 0 ){
+
+				while( $p = $query_posts->fetch_assoc() ){
+					$results[] = $p;
+				}
+
+			}
+
+			if( $query_users->num_rows > 0 ){
+
+				while( $u = $query_users->fetch_assoc() ){
+					$results[] = $u;
+				}
+
+			}
+
+			return $results;
 
 		}
+
+
 
 	}
 
