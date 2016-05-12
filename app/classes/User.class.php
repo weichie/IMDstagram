@@ -4,9 +4,9 @@
 
 		protected $userID;
 		protected $username;
-		public static $db;
+		public $db;
 
-		public function __contruct($db){
+		public function __construct($db){
 			$this->db = $db;
 		}
 
@@ -104,9 +104,9 @@
 			}
 		}
 
-		public function auth($page, $secure_pages){
+		public function auth($route, $secure_route){
 
-			if( in_array($page, $secure_pages) ){
+			if( in_array($route, $secure_route) ){
 
 				if( !isset($_SESSION['logged']) ){
 					session_destroy();
@@ -116,9 +116,36 @@
 					// Set our username and userid inside class, so we can access it instead of via Session
 					$this->setUserID( $_SESSION['userID'] );
 					$this->setUsername( $_SESSION['username'] );
+
+					return true;
 				}
 
 			}
+
+		}
+
+		public function isLoggedIn(){
+			if( $_SESSION['logged'] ){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public function view( $view = '', $params = '' ){
+
+			if( empty( $params )) {
+
+				// Default
+				$params = array(
+					'title' => 'Welcome'
+				);
+
+			} else {
+				extract($params);
+			}
+
+			include 'app/views/base.php';
 
 		}
 

@@ -17,9 +17,12 @@ $app = new User($db);
 include 'logic.php';
 
 // We feed it our $app
-$router = new Router( $app );
-
-// Load base view.
-/*include 'views/base.php';*/
+$router = new Router( $app, array(
+		'user/profile',
+		'user/post',
+		'user/feed',
+		'user/do_upload'
+	)
+);
 
 ?>

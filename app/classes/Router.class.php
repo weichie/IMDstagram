@@ -2,10 +2,12 @@
 
 class Router {
 
-	public $app;
+	protected $app;
+	protected $protected_routes;
 
-	public function __construct( $app ){
+	public function __construct( $app, $protected_routes ){
 		$this->app = $app;
+		$this->protected_routes = $protected_routes;
 
 		$this->init();
 	}
@@ -18,22 +20,29 @@ class Router {
 
 			if( strstr($route, '/') ){
 
-				$route = explode('/',$_GET['route']);
+				$route_ = explode('/',$_GET['route']);
 
-				$ctrl = $route[0].'Controller';
-				$controller = new $ctrl($this->app);
-				$controller->$route[1]();
+				// Let's auth before we call the controller?
+				if( $this->app->auth( $route, $this->protected_routes ) ){
+					$ctrl = $route_[0].'Controller';
+					$controller = new $ctrl($this->app);
+					$controller->$route_[1]();
+				}
 
 			} else {
-				new $route();
+				$ctrl = $route.'Controller';
+				$controller = new $ctrl();
+				$controller->base();
 			}
 
 		} else {
 
-			// Check if user is logged in
-			$controller = new UserController($this->app);
-			$controller->login();
-
+			if( $this->app->isLoggedIn() ){
+				header('Location: ' . SITE_URL . '/?route=user/profile');
+			} else {
+				$controller = new UserController($this->app);
+				$controller->login();
+			}
 		}
 	}
 }

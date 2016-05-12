@@ -2,7 +2,7 @@
 
 class View {
 
-	public function __construct( $view = '', $params = '' ){
+	public function view( $view = '', $params = '' ){
 
 		if( empty( $params )) {
 
@@ -18,4 +18,5 @@ class View {
 		include 'app/views/base.php';
 
 	}
+	
 }
