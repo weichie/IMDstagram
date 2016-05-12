@@ -23,12 +23,19 @@ class UserController {
 
 	public function profile(){
 
-		$posts = $this->app->getPosts();
-		$bio = $this->app->getBio();
+		if( isset($_GET['id'] ) ){
+			$id = $_GET['id'];
+		}
+
+		$posts = $this->app->getPosts($id);
+		$bio = $this->app->getBio($id);
 
 		$this->app->view('profile', array(
 				'posts' => $posts,
 				'bio' => $bio,
+				'total_posts' => $this->app->getTotalPosts($id),
+				'followers' => $this->app->getTotalFollowers($id),
+				'following' => $this->app->getTotalFollowing($id),
 			)
 		);
 
@@ -93,7 +100,10 @@ class UserController {
 
 			$this->app->view('edit_profile', array(
 					'update_message' => $update_message,
-					'bio' => $bio
+					'bio' => $bio,
+					'total_posts' => $this->app->getTotalPosts(),
+					'followers' => $this->app->getTotalFollowers(),
+					'following' => $this->app->getTotalFollowing(),
 				)
 			);
 		} else {
@@ -101,11 +111,29 @@ class UserController {
 			$bio = $this->app->getBio();
 
 			$this->app->view('edit_profile', array(
-					'bio' => $bio
+					'bio' => $bio,
+					'total_posts' => $this->app->getTotalPosts(),
+					'followers' => $this->app->getTotalFollowers(),
+					'following' => $this->app->getTotalFollowing(),
 				)
 			);
 
 		}
+
+	}
+
+	public function view_post(){
+
+		if( !isset($_GET['id']) ){
+			header('Location:' . SITE_URL);
+		}
+
+		$post = $this->app->getPost($_GET['id']);
+
+		$this->app->view('view_post', array(
+				'post' => $post
+			)
+		);
 
 	}
 

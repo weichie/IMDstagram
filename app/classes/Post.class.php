@@ -5,7 +5,6 @@
 		public function post( $picture_id, $description, $filter ){
 
 			$query = $this->db->query( 'UPDATE posts SET description="'.$description.'", date = NOW(), filter="'.$filter.'" WHERE id="'.$picture_id.'" AND user_id="'.$this->getUserID().'" ' );
-			echo $query;
 
 			if( $query ){
 				return true;
@@ -16,9 +15,63 @@
 
 		} 
 
-		public function getPosts(){
+		// Copied from CSSTricks :'(
+		public function ago($time)
+		{
+		   $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
+		   $lengths = array("60","60","24","7","4.35","12","10");
 
-			$query = $this->db->query( 'SELECT * FROM posts WHERE user_id="'.$this->getUserID().'"' );
+		   $now = time();
+
+		       $difference     = $now - $time;
+		       $tense         = "ago";
+
+		   for($j = 0; $difference >= $lengths[$j] && $j < count($lengths)-1; $j++) {
+		       $difference /= $lengths[$j];
+		   }
+
+		   $difference = round($difference);
+
+		   if($difference != 1) {
+		       $periods[$j].= "s";
+		   }
+
+		   return "$difference $periods[$j] ago ";
+		}
+
+		public function linkHashtags($text){
+
+			preg_match_all("/(#\w+)/", $text, $matches);
+
+			foreach($matches[0] as $hashtag){
+				$text = str_replace($hashtag, '<a href="'.SITE_URL.'/?route=user/search&q='.str_replace('#','',$hashtag).'">'.$hashtag.'</a>', $text);
+			}
+
+			return $text;
+
+		}
+
+		public function getPost($id){
+
+			$query = $this->db->query('SELECT * FROM posts INNER JOIN users ON (posts.user_id = users.id) WHERE posts.id = "'.$id.'"');
+			$fetch = $query->fetch_assoc();
+
+			if( $query ){
+				return $fetch;
+			} else {
+				trigger_error( $this->db->error );
+				return false;
+			}
+
+		}
+
+		public function getPosts($id=null){
+
+			if( !$id ){
+				$id = $this->getUserID();
+			}
+
+			$query = $this->db->query( 'SELECT * FROM posts WHERE user_id="'.$id.'"' );
 			if( $query->num_rows > 0){
 				$posts = array();
 
@@ -31,6 +84,17 @@
 				return array();
 			}
 
+		}
+
+		public function getTotalPosts($id=null){
+
+			if( !$id ){
+				$id = $this->getUserID();
+			}
+
+			$query = $this->db->query('SELECT count(posts.id) AS count FROM posts WHERE user_id="'.$id.'"');
+			$fetch = $query->fetch_assoc();
+			return $fetch['count'];
 		}
 
 		public function getFeed(){

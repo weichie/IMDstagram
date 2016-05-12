@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/style.min.css">
-	<link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
+	<link rel="stylesheet" href="<?=SITE_URL?>/assets/css/cssgram.css">
 
 	<!-- Fontzz -->
 	<link href='https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500' rel='stylesheet' type='text/css'>

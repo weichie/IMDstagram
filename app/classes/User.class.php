@@ -26,13 +26,39 @@
 			return $this->username;
 		}
 
-		public function getBio(){
+		public function getBio($id=null){
 
-			$query = $this->db->query('SELECT * FROM users WHERE id="'.$this->getUserID().'"');
+			if( !$id ){
+				$id = $this->getUserID();
+			}
+
+			$query = $this->db->query('SELECT * FROM users WHERE id="'.$id.'"');
 			$bio = $query->fetch_assoc();
 
 			return $bio;
 
+		}
+
+		public function getTotalFollowers($id=null){
+
+			if( !$id ){
+				$id = $this->getUserID();
+			}
+
+			$query = $this->db->query('SELECT count(followers.follower_id) AS count FROM followers WHERE follower_id="'.$id.'"');
+			$fetch = $query->fetch_assoc();
+			return $fetch['count'];
+		}
+
+		public function getTotalFollowing($id=null){
+
+			if( !$id ){
+				$id = $this->getUserID();
+			}
+
+			$query = $this->db->query('SELECT count(followers.user_id) AS count FROM followers WHERE user_id="'.$id.'"');
+			$fetch = $query->fetch_assoc();
+			return $fetch['count'];
 		}
 
 		public function registration($email, $password){
@@ -164,6 +190,32 @@
 			}
 
 			include 'app/views/base.php';
+
+		}
+
+		public function upload_avatar($file){
+			global $db;
+
+			$uploaddir = 'uploads/avatar/';
+			$uploadfile = $uploaddir . basename($file['name']);
+
+			// Todo => File validation
+
+			if( move_uploaded_file($file['tmp_name'], $uploadfile) ){
+
+				// Success
+				if( $db->query('UPDATE users SET avatar="'.$uploadfile.'" WHERE id="'.$this->getUserID().'"') === true ){
+
+					return true;
+
+				} else {
+					// TODO
+					// ERROR STUFF
+				}
+
+			} else {
+				throw new Exception('Couldn\'t upload image');
+			}
 
 		}
 

@@ -6,7 +6,22 @@
 
 <section class="acc-details">
 	<div class="col-xs-12 col-sm-4 pic">
-		<img src="https://randomuser.me/api/portraits/men/69.jpg">
+		
+		<?php if( !$bio['avatar'] ): ?>
+		Upload een Avatar.
+		<form method="post" action="<?=SITE_URL?>/?route=user/do_upload" enctype="multipart/form-data">
+		<input type="file" name="user_avatar">
+		<input type="submit" "Uploaden">
+		</form>
+		<?php else: ?>
+		<img src="<?=$bio['avatar']?>">
+		<p><a href="#!">Avatar aanpassen?</a>
+		<form method="post" action="<?=SITE_URL?>/?route=user/do_upload" enctype="multipart/form-data">
+		<input type="file" name="user_avatar">
+		<input type="submit" "Uploaden">
+		</form>
+		<?php endif; ?>
+
 	</div><!-- ./picture -->
 	<div class="col-xs-12 col-sm-8 bio">
 		<h4><?=htmlentities($bio['username'])?><a href="?p=profile">annuleren</a></h4>
@@ -16,9 +31,9 @@
 			<a href="<?=htmlentities($bio['url'])?>"><?=htmlentities($bio['url'])?></a>
 		</p>
 		<ul>
-			<li><strong>31</strong> berichten</li>
-			<li><strong>98</strong> volgers</li>
-			<li><strong>93</strong> volgend</li>
+			<li><strong><?=$total_posts?></strong> berichten</li>
+			<li><strong><?=$followers?></strong> volgers</li>
+			<li><strong><?=$following?></strong> volgend</li>
 		</ul>
 	</div><!-- ./bio -->
 	<div class="clearfix"></div>
