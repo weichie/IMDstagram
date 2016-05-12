@@ -39,15 +39,15 @@
 
 		public function search($q){
 
-			$query_posts = $this->db->query('SELECT DISTINCT * FROM users WHERE description LIKE "%test%"');
-			$query_users = $this->db->query('SELECT DISTINCT * FROM users WHERE username LIKE "%test%"');
+			$query_posts = $this->db->query('SELECT DISTINCT * FROM posts WHERE description LIKE "%'.$this->db->real_escape_string($q).'%"');
+			$query_users = $this->db->query('SELECT DISTINCT * FROM users WHERE username LIKE "%'.$this->db->real_escape_string($q).'%"');
 
 			$results = array();
 
 			if( $query_posts->num_rows > 0 ){
 
 				while( $p = $query_posts->fetch_assoc() ){
-					$results[] = $p;
+					$results['posts'][] = $p;
 				}
 
 			}
@@ -55,7 +55,7 @@
 			if( $query_users->num_rows > 0 ){
 
 				while( $u = $query_users->fetch_assoc() ){
-					$results[] = $u;
+					$results['users'][] = $u;
 				}
 
 			}

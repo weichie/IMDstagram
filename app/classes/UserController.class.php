@@ -92,8 +92,11 @@ class UserController {
 
 		$q = htmlentities($_GET['q'], ENT_QUOTES);
 
+		$results = $this->app->search($q);
+
 		$this->app->view('search', array(
-				'q' => $q
+				'q' => $q,
+				'results' => $results
 			)
 		);
 
