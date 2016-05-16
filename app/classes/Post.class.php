@@ -114,7 +114,7 @@
 		}
 
 		public function likePost($id){
-			global $db;
+
 			$user_id = $this->getUserID();
 			$post_id = $id;
 
@@ -157,7 +157,7 @@
 
 			$limit = (isset($max)) ? 'LIMIT ' . $max : '';
 
-			$getComments = $this->db->query('SELECT * FROM comments INNER JOIN users ON (comments.user_id = users.id) WHERE comments.post_id = "'.$this->db->real_escape_string($id).'" ' . $limit);
+			$getComments = $this->db->query('SELECT * FROM comments INNER JOIN users ON (comments.user_id = users.id) WHERE comments.post_id = "'.$this->db->real_escape_string($id).'" ORDER BY date DESC ' . $limit);
 			
 			//echo 'SELECT * FROM comments INNER JOIN users ON (comments.user_id = users.id) WHERE comments.post_id = "'.$this->db->real_escape_string($id).'" ' . $limit;
 

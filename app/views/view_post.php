@@ -38,7 +38,7 @@
 				<?=$this->linkHashtags($post['description'])?>
 			</p>
 			<hr>
-			<ul>
+			<ul class="comments_<?=$post['post_id']?>">
 				<?php if( !empty($post['comments']) ): ?>
 						<?php foreach($post['comments'] as $comment): ?>
 							<li>
@@ -51,9 +51,9 @@
 		<div class="reageren">
 			<a href="<?=SITE_URL?>/?route=post/like&id=<?=htmlentities($post['post_id'])?>"><i class="fa fa-heart-o"></i></a>
 			<form action="<?=SITE_URL?>/?route=post/comment" method="post">
-			<input type="hidden" value="<?=$post['post_id']?>" name="post_id">
+			<input type="hidden" value="<?=$post['post_id']?>" class="post_id" name="post_id">
 			<input type="text" class="reactie-plaatsen" name="comment" placeholder="Schrijf een reactie..." />
-			<input type="submit" value="Post !">
+			<input type="submit" class="addComment" data-name="<?=$this->getUsername()?>" value="Post !">
 			</form>
 		</div><!-- ./reageren -->
 	</div><!-- ./bottom -->
