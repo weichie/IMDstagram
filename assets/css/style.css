@@ -156,6 +156,11 @@ header .navbar a:hover {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
+.post header a.pull-right {
+  margin-top: 7px;
+  display: inline-block;
+  padding: 5px 10px;
+}
 .post .image {
   background: url("https://static.pexels.com/photos/39493/animals-cat-girl-happiness-39493.jpeg");
   background-size: cover;
