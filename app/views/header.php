@@ -33,10 +33,10 @@
 				<div class="search">
 					<div class="input-group">
 						<form action="<?=SITE_URL?>/" method="get">
-						<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
-						<input type="text" class="form-control" name="q" placeholder="Search.." aria-describedby="basic-addon1">
-						<input type="hidden" name="route" value="user/search">
-						<input type="submit" value="submit">
+							<span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
+							<input type="text" class="form-control" name="q" placeholder="Search.." aria-describedby="basic-addon1">
+							<input type="hidden" name="route" value="user/search">
+							<input type="submit" class="btn-search" value="zoeken">
 						</form>
 					</div>
 				</div><!-- ./search -->

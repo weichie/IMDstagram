@@ -108,9 +108,29 @@ header{
 			position: absolute;
 			padding-top: 8px;
 			left: 50%;
-			width: 235px;
+			width: 270 px;
 			display: none;
 			@include transform(-50%,0);
+
+			form{
+				display: flex;
+
+				.input-group-addon{
+					padding-top: 8px;
+					width: 35px;
+				}
+				.btn-search{
+					background: $dark-blue;
+					color: #fff;
+					border: none;
+					padding-right: 10px;
+					padding-left: 10px;
+					font-weight: 300;
+					border-color: $dark-blue;
+					border-radius: 0 25px 25px 0;
+				}
+			}
+
 		}
 
 		.input-group{
@@ -215,8 +235,12 @@ header{
 		text-align: center;
 		align-self: center;
 
-		img{
-			width: 55%;
+		.img{
+			margin: 0 auto;
+			margin-bottom: 10px;
+			width: 150px;
+			height: 150px;
+			background-size: cover !important;
 			@include border-radius(50%);
 		}
 	}

@@ -14,12 +14,14 @@
 		<input type="submit" "Uploaden">
 		</form>
 		<?php else: ?>
-		<img src="<?=$bio['avatar']?>">
+		<div class="img" style="background:url('<?=$bio['avatar']?>')no-repeat;"></div>
 		<p><a href="#!">Avatar aanpassen?</a>
+		<!-- 
 		<form method="post" action="<?=SITE_URL?>/?route=user/do_upload" enctype="multipart/form-data">
 		<input type="file" name="user_avatar">
 		<input type="submit" "Uploaden">
 		</form>
+	-->
 		<?php endif; ?>
 
 	</div><!-- ./picture -->
