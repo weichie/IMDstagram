@@ -16,8 +16,7 @@
 		} 
 
 		// Copied from CSSTricks :'(
-		public function ago($time)
-		{
+		public function ago($time){
 		   $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
 		   $lengths = array("60","60","24","7","4.35","12","10");
 
@@ -95,6 +94,20 @@
 			$query = $this->db->query('SELECT count(posts.id) AS count FROM posts WHERE user_id="'.$id.'"');
 			$fetch = $query->fetch_assoc();
 			return $fetch['count'];
+		}
+
+		public function deletePost($file){
+			global $db;
+
+			$query = $this->db->query('DELETE FROM posts WHERE id="'.$id.'"');
+			$fetch = $query->fetch_assoc();
+
+			if( $query ){
+				return $fetch;
+			} else {
+				trigger_error( $this->db->error );
+				return false;
+			}
 		}
 
 		public function getFeed(){

@@ -24,7 +24,8 @@ $router = new Router( $app, array(
 		'user/do_upload',
 		'user/edit_profile',
 		'user/follow',
-		'user/unfollow'
+		'user/unfollow',
+		'user/deletePost'
 	)
 );
 
