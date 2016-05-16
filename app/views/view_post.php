@@ -9,9 +9,11 @@
 			<a href="<?=SITE_URL?>/?route=user/deletePost&id=<?=htmlentities($post['post_id'])?>" class="pull-right">foto verwijderen?</a>
 		</h5>
 	</header>
-
-	<div class="image" style="background-image:url('<?=$post['image_url']?>')"></div><!-- ./image -->
 	
+	<figure class="<?=$post['filter']?>">
+	<div class="image" style="background-image:url('<?=$post['image_url']?>')"></div><!-- ./image -->
+	</figure>
+
 	<div class="bottom">
 		<div class="likes">
 			<ul>

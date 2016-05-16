@@ -133,6 +133,7 @@
 										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
 										 INNER JOIN users ON (posts.user_id = users.id)
 										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")
+										 AND report < 3
 										 ORDER BY posts.date DESC');
 
 			// Get posts from following and your own.
@@ -183,7 +184,7 @@
 			}
 
 			$query_posts = $this->db->query('SELECT DISTINCT * FROM posts WHERE description LIKE "%'.$this->db->real_escape_string($q).'%"');
-			$query_users = $this->db->query('SELECT DISTINCT * FROM users WHERE username LIKE "%'.$this->db->real_escape_string($q).'%"');
+			$query_users = $this->db->query('SELECT DISTINCT * FROM users WHERE private="0" AND username LIKE "%'.$this->db->real_escape_string($q).'%"');
 
 			$results = array();
 
