@@ -98,7 +98,23 @@
 		}
 
 		public function getFeed(){
-			// Get all posts from the ones you follow
+			$getFeed = $this->db->query('SELECT * FROM posts 
+										 INNER JOIN followers ON (posts.user_id = followers.follower_id)
+										 INNER JOIN users ON (posts.user_id = users.id)
+										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")');
+
+			// Get posts from following and your own.
+
+			if( $getFeed->num_rows ){
+				$feed = array();
+				while($f = $getFeed->fetch_assoc()){
+					$feed[] = $f;
+				}
+
+				return $feed;
+			} else {
+				return false;
+			}
 		}
 
 		public function search($q){
