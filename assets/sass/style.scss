@@ -93,7 +93,15 @@ h4{
 		color: #fff;
 	}
 }
-
+.location{
+	border: 1px solid $light-grey;
+	margin-bottom: 5px;
+	color: $dark-grey;
+	font-weight: 300;
+	font-style: italic;
+	width: 250px;
+	padding: 3px 5px;
+}
 /* HEADER 
 ======================== */
 header{

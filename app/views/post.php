@@ -57,8 +57,8 @@ if (navigator.geolocation) {
 	});
 }
 </script>
-<input type="text" name="location" value="" class="location" readonly="readonly">
-
+<input type="text" name="location" value="" class="location" disabled="disabled" readonly="readonly">
+<br>
 <textarea name="beschrijving" class="upload-txt" rows="5" placeholder="Vertel wat meer over je foto"></textarea>
 <br>
 <button class="post_img_button" type="submit"> Afbeelding plaatsen </button>
