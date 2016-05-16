@@ -35,7 +35,15 @@
 			$query = $this->db->query('SELECT * FROM users WHERE id="'.$id.'"');
 			$bio = $query->fetch_assoc();
 
-			return $bio;
+			if( $bio['private'] == 1 && $id ){
+				if( $this->isFollowing($id, true) ){
+					return $bio;
+				} else {
+					return $bio = array('id' => $bio['id'], 'username' => $bio['username']);
+				}
+			} else {
+				return $bio;
+			}
 
 		}
 
@@ -87,9 +95,11 @@
 			}
 		}
 
-		public function isFollowing($id){
+		public function isFollowing($id, $accepted=null){
 
-			$isFollowing = $this->db->query('SELECT * FROM followers WHERE user_id="'.$this->db->real_escape_string($this->getUserID()).'" AND follower_id="'.$this->db->real_escape_string($id).'"');
+			$accepted = ($accepted) ? 'AND accepted = "1"' : '';
+
+			$isFollowing = $this->db->query('SELECT * FROM followers WHERE user_id="'.$this->db->real_escape_string($this->getUserID()).'" AND follower_id="'.$this->db->real_escape_string($id).'"' . $accepted);
 			if( !$isFollowing->num_rows ){
 				return false;
 			} else {
@@ -98,11 +108,31 @@
 
 		}
 
+		public function isPrivate($id){
+			$private = $this->db->query('SELECT private FROM users WHERE id="'.$id.'"');
+
+			// the account is private, but we are following and we got accepted, jej ;)
+			if( $private->num_rows && $this->isFollowing($id, true) ){
+				return false; // Not private anymore. For this check atleast
+			} elseif ( $private->num_rows && !$this->isFollowing($id, true) ){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		public function follow($id){
 
 			if( !$this->isFollowing($id) ){
-				$followed = $this->db->query('INSERT INTO followers (user_id, follower_id) VALUES ("'.$this->getUserID().'","'.$id.'")');
+
+				if( $this->isPrivate($id) ){
+					$followed = $this->db->query('INSERT INTO followers (user_id, follower_id, accepted) VALUES ("'.$this->getUserID().'","'.$id.'", "0")');
+				} else {
+					$followed = $this->db->query('INSERT INTO followers (user_id, follower_id) VALUES ("'.$this->getUserID().'","'.$id.'")');
+				}
+
 				if( $followed ){
+					header('Location: ' . SITE_URL . '/?route=user/profile&id=' . $id );
 					return true;
 				} else {
 					return false;
