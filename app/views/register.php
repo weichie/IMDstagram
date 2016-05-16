@@ -1,6 +1,8 @@
-<?php
-	
-?>
+<?php if( isset($register_message) ): ?>
+<div class="alert alert-warning">
+	<?= $register_message ?>	
+</div>
+<?php endif; ?>
 <form action="" method="post" class="login-form">
 	<div class="form-group">
 		<label for="email">Email</label>
@@ -11,5 +13,5 @@
 		<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 	</div>
 	<button type="submit" name="register" class="btn btn-primary">Registreren</button><br>
-	<a href="?p=login">Aanmelden met een bestaand account</a>
+	<a href="<?=SITE_URL?>/?route=user/login">Aanmelden met een bestaand account</a>
 </form>

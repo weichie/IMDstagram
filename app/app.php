@@ -16,13 +16,15 @@ $app = new User($db);
 // Logic
 include 'logic.php';
 
-// We feed it our $app
+// We feed it our $app, and pages that are protected
 $router = new Router( $app, array(
 		'user/profile',
 		'user/post',
 		'user/feed',
 		'user/do_upload',
-		'user/edit_profile'
+		'user/edit_profile',
+		'user/follow',
+		'user/unfollow'
 	)
 );
 

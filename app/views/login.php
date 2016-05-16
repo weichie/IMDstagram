@@ -15,5 +15,5 @@
 	</div>
 	<button type="submit" name="login" class="btn btn-primary">Aanmelden</button><br>
 	<a href="#!">Wachtwoord vergeten?</a><br>
-	<a href="?p=register">Een nieuw account registreren</a>
+	<a href="<?=SITE_URL?>/?route=user/register">Een nieuw account registreren</a>
 </form>

@@ -94,7 +94,7 @@ class UserController {
 	public function edit_profile(){
 
 		if(isset($_POST['update'])){
-			$update_message = $this->app->update_user($_POST['email'], $_POST['name'], $_POST['username'], $_POST['site'], $_POST['bio']);
+			$update_message = $this->app->update_user($_POST['email'], $_POST['name'], $_POST['username'], $_POST['site'], $_POST['bio'], $_POST['private']);
 		
 			$bio = $this->app->getBio();
 
@@ -148,6 +148,52 @@ class UserController {
 				'results' => $results
 			)
 		);
+
+	}
+
+	public function follow(){
+
+		$id = htmlentities($_GET['id'], ENT_QUOTES);
+
+		$follow = $this->app->follow($id);
+
+		$this->app->view('follow', array(
+				'id' => $id
+			)
+		);
+
+	}
+
+	public function unfollow(){
+
+		$id = htmlentities($_GET['id'], ENT_QUOTES);
+
+		$unfollow = $this->app->unfollow($id);
+
+		$this->app->view('unfollow', array(
+				'id' => $id
+			)
+		);
+
+	}
+
+	public function register(){
+
+		if(isset($_POST['register'])){
+			$register_message = $this->app->registration($_POST['email'], $_POST['password']);
+
+			$this->app->view('register', array(
+				'register_message' => $register_message)
+			);
+		} else {
+			$this->app->view('register');
+		}
+
+	}
+
+	public function logout(){
+
+		$this->app->logout();
 
 	}
 	

@@ -16,6 +16,7 @@
 		<li>
 			<a href="<?=SITE_URL?>/?route=user/profile&id=<?=$user['id']?>">
 				<img src="<?=$user['avatar']?>" alt="" />
+				<h5><?=$user['username']?></h5>
 			</a>
 		</li>
 

@@ -5,9 +5,18 @@
 	<div class="col-xs-12 col-sm-8 bio">
 		<h4><?=htmlentities($bio['username'])?> 
 
-		<?php if( $bio['id']== $this->getUserID()) : ?>
+		<?php if( $bio['id'] == $this->getUserID()) : ?>
 		<a href="<?=SITE_URL?>/?route=user/edit_profile">Bewerken</a>
-		<a href="#!">Volgen</a>
+		<?php else: ?>
+			
+			<?php
+			if( $this->isFollowing($bio['id']) ):
+			?>
+			<a href="<?=SITE_URL?>/?route=user/unfollow&id=<?=htmlentities($bio['id'])?>" class="btn btn-danger">Volg jij</a>
+			<?php else: ?>
+			<a href="<?=SITE_URL?>/?route=user/follow&id=<?=htmlentities($bio['id'])?>">Volgen</a>
+			<?php endif; ?>
+
 		<?php endif; ?>
 		</h4>
 		<p>

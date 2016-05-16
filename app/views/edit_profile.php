@@ -73,9 +73,16 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="bio" class="col-sm-2 control-label">Account is privé?</label>
+			<div class="col-sm-10">
+				<input type="checkbox" name="private" value="1" <?=($bio['private']) ? 'checked="checked"' : ''?>>
+			</div>
+		</div>
+		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<button type="submit" name="update" class="btn btn-success">opslaan</button>
 			</div>
 		</div>
+
 	</form>
 </section>

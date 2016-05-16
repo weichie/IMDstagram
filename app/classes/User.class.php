@@ -73,7 +73,6 @@
 
 			//staat email al in de database?
 			$controle = "SELECT email, password FROM users WHERE email='$email'";
-			echo $controle;
 			$qry = $db->query($controle);
 			$result = $qry->fetch_assoc();
 
@@ -88,10 +87,52 @@
 			}
 		}
 
-		public function update_user($email, $name, $username, $site, $bio){
+		public function isFollowing($id){
+
+			$isFollowing = $this->db->query('SELECT * FROM followers WHERE user_id="'.$this->db->real_escape_string($this->getUserID()).'" AND follower_id="'.$this->db->real_escape_string($id).'"');
+			if( !$isFollowing->num_rows ){
+				return false;
+			} else {
+				return true;
+			}
+
+		}
+
+		public function follow($id){
+
+			if( !$this->isFollowing($id) ){
+				$followed = $this->db->query('INSERT INTO followers (user_id, follower_id) VALUES ("'.$this->getUserID().'","'.$id.'")');
+				if( $followed ){
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+
+		}
+
+		public function unfollow($id){
+
+			if( $this->isFollowing($id) ){
+				$followed = $this->db->query('DELETE FROM followers WHERE user_id="'.$this->getUserID().'" AND follower_id="'.$id.'"');
+				if( $followed ){
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+
+		}
+
+		public function update_user($email, $name, $username, $site, $bio, $private){
 			global $db;
 
-			$query = "UPDATE users SET name='".$name."', username='".$username."', bio='".$bio."', url='".$site."', email='".$email."' WHERE id=".$_SESSION['userID'].";";
+			$private = (isset($private)) ? $private : 0;
+			$query = "UPDATE users SET name='".$name."', username='".$username."', bio='".$bio."', url='".$site."', email='".$email."', private='".$private."' WHERE id=".$_SESSION['userID'].";";
 
 			$controle = "SELECT id FROM users WHERE id=".$_SESSION['userID']."";
 			//echo $controle;
