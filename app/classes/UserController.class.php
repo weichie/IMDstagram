@@ -74,19 +74,21 @@ class UserController {
 				)
 			);
 
-		}
+		} else {
 
-		if( isset($_POST['post_id']) ){
-			
-			$post = $this->app->post( $_POST['post_id'], $_POST['beschrijving'], $_POST['filter'] );
+			if( isset($_POST['post_id']) ){
+				
+				$post = $this->app->post( $_POST['post_id'], $_POST['beschrijving'], $_POST['filter'] );
 
-			if( $post ){
-				header('Location: ' . SITE_URL . '/?route=user/profile');
+				if( $post ){
+					header('Location: ' . SITE_URL . '/?route=user/profile');
+				}
+
 			}
 
-		}
+			$this->app->view('post');
 
-		$this->app->view('post');
+		}
 
 	}
 

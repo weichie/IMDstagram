@@ -112,9 +112,10 @@
 
 		public function getFeed(){
 			$getFeed = $this->db->query('SELECT * FROM posts 
-										 INNER JOIN followers ON (posts.user_id = followers.follower_id)
+										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
 										 INNER JOIN users ON (posts.user_id = users.id)
-										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")');
+										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")
+										 ORDER BY posts.date DESC');
 
 			// Get posts from following and your own.
 
