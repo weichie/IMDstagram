@@ -35,25 +35,26 @@
 		</div><!-- ./likes -->
 		<div class="reacties">
 			<p class="poster">
-				<strong><?=$post['username']?></strong> <?=$this->linkHashtags($post['description'])?>
+				<?=$this->linkHashtags($post['description'])?>
 			</p>
+			<hr>
 			<ul>
-				<li>
-				Moetk nog doen :)
-				</li>
-				<li>
-					<strong>Yame</strong>
-					Lorem ipsum dolor sit amet :)
-				</li>
-				<li>
-					<strong>Yame</strong>
-					Lorem ipsum dolor sit amet :)
-				</li>
+				<?php if( !empty($post['comments']) ): ?>
+						<?php foreach($post['comments'] as $comment): ?>
+							<li>
+								<strong><?= $comment['username'] ?></strong> <?= $this->linkHashtags($comment['comment']); ?>
+							</li>
+						<?php endforeach; ?>
+				<?php endif; ?>
 			</ul>
 		</div><!-- ./reacties -->
 		<div class="reageren">
 			<a href="#!"><i class="fa fa-heart-o"></i></a>
-			<input type="text" class="reactie-plaatsen" placeholder="Schrijf een reactie..." />
+			<form action="<?=SITE_URL?>/?route=post/comment" method="post">
+			<input type="hidden" value="<?=$post['post_id']?>" name="post_id">
+			<input type="text" class="reactie-plaatsen" name="comment" placeholder="Schrijf een reactie..." />
+			<input type="submit" value="Post !">
+			</form>
 		</div><!-- ./reageren -->
 	</div><!-- ./bottom -->
 </section><!-- ./post -->
