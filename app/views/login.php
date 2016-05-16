@@ -4,7 +4,7 @@
 </div>
 <?php endif; ?>
 
-<form action="" method="post" class="login-form">
+<form action="<?=SITE_URL?>/?route=user/login" method="post" class="login-form">
 	<div class="form-group">
 		<label for="email">Email</label>
 		<input type="email" class="form-control" name="email" id="email" placeholder="Email">

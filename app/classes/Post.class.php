@@ -15,7 +15,6 @@
 
 		} 
 
-		// Copied from CSSTricks :'(
 		public function ago($time){
 		   $periods = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
 		   $lengths = array("60","60","24","7","4.35","12","10");

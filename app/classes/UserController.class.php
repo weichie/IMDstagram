@@ -18,7 +18,7 @@ class UserController {
 	public function login(){
 
 		if(isset($_POST['login'])){
-			$login_message = $app->login($_POST['email'], $_POST['password']);
+			$login_message = $this->app->login($_POST['email'], $_POST['password']);
 
 			$this->app->view('login', array(
 					'login_message' => $login_message
