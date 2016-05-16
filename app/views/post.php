@@ -46,6 +46,19 @@
 	<?php endforeach; ?>
 </ul>
 
+<script>
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(function(pos){
+		console.log(pos.coords);
+		$.get('http://maps.googleapis.com/maps/api/geocode/json?address='+pos.coords.latitude+','+pos.coords.longitude+'&sensor=false', function(res){
+			console.log(res);
+			$('.location').val( res.results[2].formatted_address );
+		});
+	});
+}
+</script>
+<input type="text" name="location" value="" class="location" readonly="readonly">
+
 <textarea name="beschrijving" class="upload-txt" rows="5" placeholder="Vertel wat meer over je foto"></textarea>
 <br>
 <button class="post_img_button" type="submit"> Afbeelding plaatsen </button>

@@ -33,6 +33,8 @@ class UserController {
 
 		if( isset($_GET['id'] ) ){
 			$id = $_GET['id'];
+		} else {
+			$id = $this->app->getUserID();
 		}
 
 		$posts = $this->app->getPosts($id);
@@ -86,7 +88,7 @@ class UserController {
 
 			if( isset($_POST['post_id']) ){
 				
-				$post = $this->app->post( $_POST['post_id'], $_POST['beschrijving'], $_POST['filter'] );
+				$post = $this->app->post( $_POST['post_id'], $_POST['beschrijving'], $_POST['filter'], $_POST['location'] );
 
 				if( $post ){
 					header('Location: ' . SITE_URL . '/?route=user/profile');
