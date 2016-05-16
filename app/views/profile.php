@@ -7,6 +7,7 @@
 
 		<?php if( $bio['id']== $this->getUserID()) : ?>
 		<a href="<?=SITE_URL?>/?route=user/edit_profile">Bewerken</a>
+		<a href="#!">Volgen</a>
 		<?php endif; ?>
 		</h4>
 		<p>
