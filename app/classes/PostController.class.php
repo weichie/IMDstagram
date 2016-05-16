@@ -27,5 +27,11 @@ class PostController {
 		}
 
 	}
+
+	public function unlike(){
+		if(isset($_GET['id'])){
+			$this->app->unlikePost($_GET['id']);
+		}
+	}
 	
 }
