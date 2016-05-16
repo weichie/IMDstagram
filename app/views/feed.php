@@ -31,16 +31,16 @@
 					<?php if( !empty($post['comments']) ): ?>
 							<?php foreach($post['comments'] as $comment): ?>
 								<li>
-									<strong><?php htmlspecialchars($comment['username'], ENT_QUOTES, 'UTF-8'); ?></strong> <?= $this->linkHashtags($comment['comment']); ?>
+									<strong><?php echo htmlspecialchars($comment['username'], ENT_QUOTES, 'UTF-8'); ?></strong> <?= $this->linkHashtags($comment['comment']); ?>
 								</li>
 							<?php endforeach; ?>
 					<?php endif; ?>
 				</ul>
 			</div><!-- ./reacties -->
 			<div class="reageren">
-				<a href="<?=SITE_URL?>/?route=post/like&id=<?php htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="like" data-id="<?php htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>"><i class="fa fa-heart-o"></i></a>
+				<a href="<?=SITE_URL?>/?route=post/like&id=<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="like" data-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>"><i class="fa fa-heart-o"></i></a>
 				<form action="<?=SITE_URL?>/?route=post/comment" method="post">
-				<input type="hidden" value="<?php htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="post_id" name="post_id">
+				<input type="hidden" value="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="post_id" name="post_id">
 				<input type="text" class="reactie-plaatsen" name="comment" placeholder="Schrijf een reactie..." />
 				<input type="submit" class="addComment" data-name="<?=$this->getUsername()?>" value="Post !">
 				</form>

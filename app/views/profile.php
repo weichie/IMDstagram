@@ -4,9 +4,9 @@
 	</div><!-- ./picture -->
 	<?php if( !$this->isPrivate($bio['id']) ): ?>
 	<div class="col-xs-12 col-sm-8 bio">
-		<h4><?php htmlspecialchars($bio['username'], ENT_QUOTES, 'UTF-8'); ?>
+		<h4><?php echo htmlspecialchars($bio['username'], ENT_QUOTES, 'UTF-8'); ?>
 
-		<?php if( htmlspecialchars($bio['id'], ENT_QUOTES, 'UTF-8') == $this->getUserID()) : ?>
+		<?php if( $bio['id'] == $this->getUserID()) : ?>
 		<a href="<?=SITE_URL?>/?route=user/edit_profile">Bewerken</a>
 		<?php else: ?>
 			
@@ -29,19 +29,19 @@
 		<?php endif; ?>
 		</h4>
 		<p>
-			<strong><?php htmlspecialchars($bio['name'], ENT_QUOTES, 'UTF-8'); ?></strong> <?php htmlspecialchars($bio['bio'], ENT_QUOTES, 'UTF-8'); ?>
+			<strong><?php echo htmlspecialchars($bio['name'], ENT_QUOTES, 'UTF-8'); ?></strong> <?php echo htmlspecialchars($bio['bio'], ENT_QUOTES, 'UTF-8'); ?>
 			<br>
-			<a href="<?php htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?>"><?php htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?></a>
+			<a href="<?php echo htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?></a>
 		</p>
 		<ul>
-			<li><strong><?php htmlspecialchars($total_posts, ENT_QUOTES, 'UTF-8'); ?></strong> berichten</li>
-			<li><strong><?php htmlspecialchars($followers, ENT_QUOTES, 'UTF-8'); ?></strong> volgers</li>
-			<li><strong><?php htmlspecialchars($following, ENT_QUOTES, 'UTF-8'); ?></strong> volgend</li>
+			<li><strong><?php echo htmlspecialchars($total_posts, ENT_QUOTES, 'UTF-8'); ?></strong> berichten</li>
+			<li><strong><?php echo htmlspecialchars($followers, ENT_QUOTES, 'UTF-8'); ?></strong> volgers</li>
+			<li><strong><?php echo htmlspecialchars($following, ENT_QUOTES, 'UTF-8'); ?></strong> volgend</li>
 		</ul>
 	</div><!-- ./bio -->
 	<?php else: ?>
 	<div class="col-xs-12 col-sm-8 bio">
-		<h4><?php htmlspecialchars($bio['username'], ENT_QUOTES, 'UTF-8'); ?> 
+		<h4><?php echo htmlspecialchars($bio['username'], ENT_QUOTES, 'UTF-8'); ?> 
 
 		<?php if( $bio['id'] == $this->getUserID()) : ?>
 		<a href="<?=SITE_URL?>/?route=user/edit_profile">Bewerken</a>
@@ -50,7 +50,7 @@
 			<?php
 			if( $this->isFollowing($bio['id'], true) ):
 			?>
-			<a href="<?=SITE_URL?>/?route=user/unfollow&id=<?php htmlspecialchars($bio['id'], ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-danger">Volg jij</a>
+			<a href="<?=SITE_URL?>/?route=user/unfollow&id=<?php echo htmlspecialchars($bio['id'], ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-danger">Volg jij</a>
 			<?php endif; ?>
 			<?php
 			if( !$this->isFollowing($bio['id'], true) && $this->isFollowing($bio['id']) ):
@@ -60,7 +60,7 @@
 			<?php
 			if( !$this->isFollowing($bio['id']) ):
 			?>
-			<a href="<?=SITE_URL?>/?route=user/follow&id=<?php htmlspecialchars($bio['id'], ENT_QUOTES, 'UTF-8'); ?>">Volgen</a>
+			<a href="<?=SITE_URL?>/?route=user/follow&id=<?php echo htmlspecialchars($bio['id'], ENT_QUOTES, 'UTF-8'); ?>">Volgen</a>
 			<?php endif; ?>
 
 		<?php endif; ?>
@@ -83,9 +83,9 @@
 
 			<?php foreach($posts as $post): ?>
 			<li>
-				<a href="<?=SITE_URL?>/?route=user/view_post&id=<?php htmlspecialchars($post['id'], ENT_QUOTES, 'UTF-8'); ?>">
-					<figure class="<?php htmlspecialchars($post['filter'], ENT_QUOTES, 'UTF-8'); ?>">
-					<img src="<?php htmlspecialchars($post['image_url'], ENT_QUOTES, 'UTF-8'); ?>" alt="" />
+				<a href="<?=SITE_URL?>/?route=user/view_post&id=<?php echo htmlspecialchars($post['id'], ENT_QUOTES, 'UTF-8'); ?>">
+					<figure class="<?php echo htmlspecialchars($post['filter'], ENT_QUOTES, 'UTF-8'); ?>">
+					<img src="<?php echo htmlspecialchars($post['image_url'], ENT_QUOTES, 'UTF-8'); ?>" alt="" />
 					</figure>
 				</a>
 			</li>

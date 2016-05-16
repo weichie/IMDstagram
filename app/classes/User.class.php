@@ -35,6 +35,10 @@
 			$query = $this->db->query('SELECT * FROM users WHERE id="'.$this->db->real_escape_string($id).'"');
 			$bio = $query->fetch_assoc();
 
+			if( $id == $this->getUserID() ){
+				return $bio;
+			}
+
 			if( $bio['private'] == 1 && $id ){
 				if( $this->isFollowing($id, true) ){
 					return $bio;
@@ -77,7 +81,7 @@
 			];
 
 			$password = password_hash($password,PASSWORD_DEFAULT, $options);
-			$query = "INSERT INTO users(email, username, password) VALUES ('".$this->db->real_escape_string($email)"','".$this->db->real_escape_string($email)."','".$this->db->real_escape_string($password)."');";
+			$query = "INSERT INTO users(email, username, password) VALUES ('".$this->db->real_escape_string($email)."','".$this->db->real_escape_string($email)."','".$this->db->real_escape_string($password)."');";
 
 			//staat email al in de database?
 			$controle = "SELECT email, username, password FROM users WHERE email='".$this->db->real_escape_string($email)."'";
@@ -109,6 +113,11 @@
 		}
 
 		public function isPrivate($id){
+
+			if( $id == $this->getUserID() ){
+				return false;
+			}
+
 			$private = $this->db->query('SELECT private FROM users WHERE id="'.$this->db->real_escape_string($id).'"');
 
 			// the account is private, but we are following and we got accepted, jej ;)
