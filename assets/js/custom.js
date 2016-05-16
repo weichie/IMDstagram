@@ -42,6 +42,7 @@ $(document).ready(function(){
 		}, function success(data){
 
 			$button.addClass('liked');
+			$button.find('i').removeClass('fa-heart-o').addClass('fa-heart');
 
 			console.log(data);
 		});
