@@ -118,7 +118,7 @@
 			$user_id = $this->getUserID();
 			$post_id = $id;
 
-			$query = "INSERT INTO likes(user_id, post_id) VALUES ('$user_id','$post_id');";
+			$query = "INSERT INTO likes(user_id, post_id) VALUES ('".$this->db->real_escape_string($user_id)."','".$this->db->real_escape_string($post_id)."');";
 
 			if( $query ){
 				return true;

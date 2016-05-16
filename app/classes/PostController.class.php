@@ -17,5 +17,15 @@ class PostController {
 		}
 
 	}
+
+	public function like(){
+
+		if( isset($_GET['id']) ){
+
+			$this->app->likePost($_GET['id']);
+
+		}
+
+	}
 	
 }
