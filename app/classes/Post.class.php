@@ -118,12 +118,18 @@
 			$user_id = $this->getUserID();
 			$post_id = $id;
 
-			$query = "INSERT INTO likes(user_id, post_id) VALUES ('".$this->db->real_escape_string($user_id)."','".$this->db->real_escape_string($post_id)."');";
+			$controle = $this->db->query('SELECT * FROM likes WHERE user_id="'.$this->db->real_escape_string($user_id).'" AND post_id="'.$this->db->real_escape_string($post_id).'"');
 
-			if( $query ){
-				return true;
-			} else {
-				trigger_error( $this->db->error );
+			if( !$controle->num_rows){
+				$query = $this->db->query("INSERT INTO likes(user_id, post_id) VALUES ('".$this->db->real_escape_string($user_id)."','".$this->db->real_escape_string($post_id)."');");
+
+				if( $query ){
+					return true;
+				} else {
+					trigger_error( $this->db->error );
+					return false;
+				}
+			}else{
 				return false;
 			}
 		}
@@ -174,6 +180,20 @@
 				return false;
 			}
 
+		}
+
+		public function getLikes($id){
+			$getLikes = $this->db->query('SELECT * FROM likes INNER JOIN users ON(likes.user_id = users.id) WHERE likes.post_id="'.$this->db->real_escape_string($id).'"');
+
+			if($getLikes->num_rows){
+				$likes = array();
+				while($l = $getLikes->fetch_assoc()){
+					$likes[] = $l;
+				}
+				return $likes;
+			}else{
+				return false;
+			}
 		}
 
 		public function search($q){

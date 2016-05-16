@@ -15,24 +15,16 @@
 	<div class="bottom">
 		<div class="likes">
 			<ul>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
-				<li><a href="#!">Weichie</a></li>
+				<?php if( !empty($post['likes']) ): ?>
+						<?php foreach($post['likes'] as $like): ?>
+							<li>
+								<a href="#!"><?= $like['username'] ?></strong> <?= $this->linkHashtags($like['like']); ?>
+							</li>
+						<?php endforeach; ?>
+				<?php endif; ?>
 			</ul>
 		</div><!-- ./likes -->
+
 		<div class="reacties">
 			<p class="poster">
 				<?=$this->linkHashtags($post['description'])?>
