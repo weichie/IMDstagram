@@ -43,7 +43,12 @@ class UserController {
 
 	public function feed(){
 
-		$this->app->view('feed');
+		$feed = $this->app->getFeed();
+
+		$this->app->view('feed', array(
+			'feed' => $feed
+			)
+		);
 
 	}
 
