@@ -98,8 +98,9 @@
 
 		public function deletePost($id){
 			global $db;
+			$user_id = $this->getUserID();
 
-			$query = $this->db->query('DELETE FROM posts WHERE id="'.$this->db->real_escape_string($id).'"');
+			$query = $this->db->query('DELETE FROM posts WHERE id="'.$this->db->real_escape_string($id).'" AND user_id="'.$this->db->real_escape_string($user_id).'"');
 
 			if( $query ){
 				return true;
