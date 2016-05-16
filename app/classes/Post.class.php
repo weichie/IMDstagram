@@ -4,7 +4,7 @@
 
 		public function post( $picture_id, $description, $filter ){
 
-			$query = $this->db->query( 'UPDATE posts SET description="'.$description.'", date = NOW(), filter="'.$filter.'" WHERE id="'.$picture_id.'" AND user_id="'.$this->getUserID().'" ' );
+			$query = $this->db->query( 'UPDATE posts SET description="'.$this->db->real_escape_string($description).'", date = NOW(), filter="'.$this->db->real_escape_string($filter).'" WHERE id="'.$this->db->real_escape_string($picture_id).'" AND user_id="'.$this->getUserID().'" ' );
 
 			if( $query ){
 				return true;
@@ -52,7 +52,7 @@
 
 		public function getPost($id){
 
-			$query = $this->db->query('SELECT *, posts.id AS post_id FROM posts INNER JOIN users ON (posts.user_id = users.id) WHERE posts.id = "'.$id.'"');
+			$query = $this->db->query('SELECT *, posts.id AS post_id FROM posts INNER JOIN users ON (posts.user_id = users.id) WHERE posts.id = "'.$this->db->real_escape_string($id).'"');
 			$fetch = $query->fetch_assoc();
 
 			if( $query ){
@@ -73,7 +73,7 @@
 				$id = $this->getUserID();
 			}
 
-			$query = $this->db->query( 'SELECT * FROM posts WHERE user_id="'.$id.'"' );
+			$query = $this->db->query( 'SELECT * FROM posts WHERE user_id="'.$this->db->real_escape_string($id).'"' );
 			if( $query->num_rows > 0){
 				$posts = array();
 

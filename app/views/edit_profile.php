@@ -1,6 +1,6 @@
 <?php if( isset($update_message) ): ?>
 <div class="alert alert-warning">
-	<?= $update_message ?>	
+	<?php htmlspecialchars($update_message, ENT_QUOTES, 'UTF-8');?>	
 </div>
 <?php endif; ?>
 
@@ -26,16 +26,16 @@
 
 	</div><!-- ./picture -->
 	<div class="col-xs-12 col-sm-8 bio">
-		<h4><?=htmlentities($bio['username'])?><a href="?p=profile">annuleren</a></h4>
+		<h4><?php htmlspecialchars($bio['username'], ENT_QUOTES, 'UTF-8'); ?><a href="?p=profile">annuleren</a></h4>
 		<p>
-			<strong><?=htmlentities($bio['name'])?></strong> <?=htmlentities($bio['bio'])?>
+			<strong><?php htmlspecialchars($bio['name'], ENT_QUOTES, 'UTF-8'); ?></strong> <?php htmlspecialchars($bio['bio'], ENT_QUOTES, 'UTF-8'); ?>
 			<br>
-			<a href="<?=htmlentities($bio['url'])?>"><?=htmlentities($bio['url'])?></a>
+			<a href="<?php htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?>"><?php htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?></a>
 		</p>
 		<ul>
-			<li><strong><?=$total_posts?></strong> berichten</li>
-			<li><strong><?=$followers?></strong> volgers</li>
-			<li><strong><?=$following?></strong> volgend</li>
+			<li><strong><?php htmlspecialchars($total_posts, ENT_QUOTES, 'UTF-8'); ?></strong> berichten</li>
+			<li><strong><?php htmlspecialchars($followers, ENT_QUOTES, 'UTF-8'); ?></strong> volgers</li>
+			<li><strong><?php htmlspecialchars($following, ENT_QUOTES, 'UTF-8'); ?></strong> volgend</li>
 		</ul>
 	</div><!-- ./bio -->
 	<div class="clearfix"></div>
@@ -45,31 +45,31 @@
 		<div class="form-group">
 			<label for="email" class="col-sm-2 control-label">Email</label>
 			<div class="col-sm-10">
-				<input type="email" class="form-control" name="email" id="email" value="<?=htmlentities($bio['email'])?>">
+				<input type="email" class="form-control" name="email" id="email" value="<?php htmlspecialchars($bio['email'], ENT_QUOTES, 'UTF-8'); ?>">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Naam</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="name" id="name" value="<?=htmlentities($bio['name'])?>">
+				<input type="text" class="form-control" name="name" id="name" value="<?php htmlspecialchars($bio['name'], ENT_QUOTES, 'UTF-8'); ?>">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="username" class="col-sm-2 control-label">gebruikersnaam</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="username" id="username" value="<?=htmlentities($bio['username'])?>">
+				<input type="text" class="form-control" name="username" id="username" value="<?php htmlspecialchars($bio['username'], ENT_QUOTES, 'UTF-8'); ?>">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="site" class="col-sm-2 control-label">Website</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="site" id="site" value="<?=htmlentities($bio['url'])?>">
+				<input type="text" class="form-control" name="site" id="site" value="<?php htmlspecialchars($bio['url'], ENT_QUOTES, 'UTF-8'); ?>">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="bio" class="col-sm-2 control-label">Bio</label>
 			<div class="col-sm-10">
-				<textarea type="text" rows="5" class="form-control" name="bio" id="bio"><?=htmlentities($bio['bio'])?></textarea>
+				<textarea type="text" rows="5" class="form-control" name="bio" id="bio"><?php htmlspecialchars($bio['bio'], ENT_QUOTES, 'UTF-8'); ?></textarea>
 			</div>
 		</div>
 		<div class="form-group">

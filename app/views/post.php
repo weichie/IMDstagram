@@ -21,13 +21,13 @@
 <?php else: ?>
 
 <figure id="baseImage" style="max-width:200px">
-	<img src="<?=$picture?>" style="max-width:200px">
+	<img src="<?php htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" style="max-width:200px">
 </figure>
 
 <?php endif; ?>
 
 <?php if( isset($id) ): ?>
-	<input type="hidden" value="<?=$id?>" name="post_id">
+	<input type="hidden" value="<?php htmlspecialchars($id, ENT_QUOTES, 'UTF-8'); ?>" name="post_id">
 <?php endif; ?>
 
 <?php if( isset($picture) ): ?>
@@ -38,9 +38,9 @@
 	foreach( array('nofilter', 'rise', 'mayfair', 'xpro2', 'inkwell', 'earlybird','_1977','aden') as $id => $filter ):
 	?>
 	<li>
-		<figure class="<?=$filter?>">
-			<img src="<?=$picture?>" class="smallImage"><br>
-			<input type="radio" <?=($id==0)?'checked="checked"':'';?> name="filter" value="<?=$filter?>">
+		<figure class="<?php htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'); ?>">
+			<img src="<?php htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" class="smallImage"><br>
+			<input type="radio" <?=($id==0)?'checked="checked"':'';?> name="filter" value="<?php htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'); ?>">
 		</figure>
 	</li>
 	<?php endforeach; ?>

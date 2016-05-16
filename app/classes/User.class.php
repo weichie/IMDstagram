@@ -32,7 +32,7 @@
 				$id = $this->getUserID();
 			}
 
-			$query = $this->db->query('SELECT * FROM users WHERE id="'.$id.'"');
+			$query = $this->db->query('SELECT * FROM users WHERE id="'.$this->db->real_escape_string($id).'"');
 			$bio = $query->fetch_assoc();
 
 			if( $bio['private'] == 1 && $id ){
@@ -53,7 +53,7 @@
 				$id = $this->getUserID();
 			}
 
-			$query = $this->db->query('SELECT count(followers.follower_id) AS count FROM followers WHERE follower_id="'.$id.'"');
+			$query = $this->db->query('SELECT count(followers.follower_id) AS count FROM followers WHERE follower_id="'.$this->db->real_escape_string($id).'"');
 			$fetch = $query->fetch_assoc();
 			return $fetch['count'];
 		}
@@ -64,7 +64,7 @@
 				$id = $this->getUserID();
 			}
 
-			$query = $this->db->query('SELECT count(followers.user_id) AS count FROM followers WHERE user_id="'.$id.'"');
+			$query = $this->db->query('SELECT count(followers.user_id) AS count FROM followers WHERE user_id="'.$this->db->real_escape_string($id).'"');
 			$fetch = $query->fetch_assoc();
 			return $fetch['count'];
 		}
@@ -77,10 +77,10 @@
 			];
 
 			$password = password_hash($password,PASSWORD_DEFAULT, $options);
-			$query = "INSERT INTO users(email, username, password) VALUES ('$email','$username','$password');";
+			$query = "INSERT INTO users(email, username, password) VALUES ('".$this->db->real_escape_string($email)"','".$this->db->real_escape_string($email)."','".$this->db->real_escape_string($password)."');";
 
 			//staat email al in de database?
-			$controle = "SELECT email, username, password FROM users WHERE email='$email'";
+			$controle = "SELECT email, username, password FROM users WHERE email='".$this->db->real_escape_string($email)."'";
 			$qry = $db->query($controle);
 			$result = $qry->fetch_assoc();
 
@@ -109,7 +109,7 @@
 		}
 
 		public function isPrivate($id){
-			$private = $this->db->query('SELECT private FROM users WHERE id="'.$id.'"');
+			$private = $this->db->query('SELECT private FROM users WHERE id="'.$this->db->real_escape_string($id).'"');
 
 			// the account is private, but we are following and we got accepted, jej ;)
 			if( $private->num_rows && $this->isFollowing($id, true) ){
@@ -126,9 +126,9 @@
 			if( !$this->isFollowing($id) ){
 
 				if( $this->isPrivate($id) ){
-					$followed = $this->db->query('INSERT INTO followers (user_id, follower_id, accepted) VALUES ("'.$this->getUserID().'","'.$id.'", "0")');
+					$followed = $this->db->query('INSERT INTO followers (user_id, follower_id, accepted) VALUES ("'.$this->getUserID().'","'.$this->db->real_escape_string($id).'", "0")');
 				} else {
-					$followed = $this->db->query('INSERT INTO followers (user_id, follower_id) VALUES ("'.$this->getUserID().'","'.$id.'")');
+					$followed = $this->db->query('INSERT INTO followers (user_id, follower_id) VALUES ("'.$this->getUserID().'","'.$this->db->real_escape_string($id).'")');
 				}
 
 				if( $followed ){
@@ -146,7 +146,7 @@
 		public function unfollow($id){
 
 			if( $this->isFollowing($id) ){
-				$followed = $this->db->query('DELETE FROM followers WHERE user_id="'.$this->getUserID().'" AND follower_id="'.$id.'"');
+				$followed = $this->db->query('DELETE FROM followers WHERE user_id="'.$this->getUserID().'" AND follower_id="'.$this->db->real_escape_string($id).'"');
 				if( $followed ){
 					return true;
 				} else {
@@ -162,7 +162,7 @@
 			global $db;
 
 			$private = (isset($private)) ? $private : 0;
-			$query = "UPDATE users SET name='".$name."', username='".$username."', bio='".$bio."', url='".$site."', email='".$email."', private='".$private."' WHERE id=".$_SESSION['userID'].";";
+			$query = "UPDATE users SET name='".$this->db->real_escape_string($name)."', username='".$this->db->real_escape_string($username)."', bio='".$this->db->real_escape_string($bio)."', url='".$this->db->real_escape_string($site)."', email='".$this->db->real_escape_string($email)."', private='".$this->db->real_escape_string($private)."' WHERE id=".$_SESSION['userID'].";";
 
 			$controle = "SELECT id FROM users WHERE id=".$_SESSION['userID']."";
 			//echo $controle;
@@ -188,7 +188,7 @@
 
 		public function login($email, $password){
 			global $db;
-			$query = "SELECT id, username, email, password FROM users WHERE email='$email'";
+			$query = "SELECT id, username, email, password FROM users WHERE email='".$this->db->real_escape_string($email)."'";
 			$qry = $db->query($query);
 			$result = $qry->fetch_assoc();
 
@@ -275,7 +275,7 @@
 			if( move_uploaded_file($file['tmp_name'], $uploadfile) ){
 
 				// Success
-				if( $db->query('UPDATE users SET avatar="'.$uploadfile.'" WHERE id="'.$this->getUserID().'"') === true ){
+				if( $db->query('UPDATE users SET avatar="'.$this->db->real_escape_string($uploadfile).'" WHERE id="'.$this->getUserID().'"') === true ){
 
 					return true;
 
