@@ -27,7 +27,12 @@ $router = new Router( $app, array(
 		'user/unfollow',
 		'user/deletePost',
 		'post/comment',
-		'post/like'
+		'post/like',
+
+
+		// *Ajax functions* //
+		'ajax/comment',
+		'ajax/like'
 	)
 );
 

@@ -15,6 +15,10 @@
 
 	<!-- Fontzz -->
 	<link href='https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500' rel='stylesheet' type='text/css'>
+
+	<script>
+	var ajax_url = '<?=SITE_URL?>/?route=ajax';
+	</script>
 </head>
 <body>
 	<header>
