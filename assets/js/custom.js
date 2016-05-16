@@ -42,7 +42,11 @@ $(document).ready(function(){
 		}, function success(data){
 
 			$button.addClass('liked');
-			$button.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+			if( $button.find('i').hasClass('fa-heart-o') ){
+				$button.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+			} else {
+				$button.find('i').removeClass('fa-heart').addClass('fa-heart-o');
+			}
 
 			console.log(data);
 		});

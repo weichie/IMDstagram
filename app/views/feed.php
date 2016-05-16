@@ -24,21 +24,21 @@
 		<div class="bottom">
 			<div class="reacties">
 				<p class="poster">
-					<?=$this->linkHashtags($post['description'])?>
+					<?=$this->linkHashtags($post['description'])?> <i><?php echo htmlspecialchars($post['post_location'], ENT_QUOTES, 'UTF-8');?></i>
 				</p>
 				<hr>
 				<ul class="comments_<?=$post['post_id']?>">
 					<?php if( !empty($post['comments']) ): ?>
 							<?php foreach($post['comments'] as $comment): ?>
 								<li>
-									<strong><?php echo htmlspecialchars($comment['username'], ENT_QUOTES, 'UTF-8'); ?></strong> <?= $this->linkHashtags($comment['comment']); ?>
+									<strong><?php echo htmlspecialchars($comment['username'], ENT_QUOTES, 'UTF-8'); ?></strong> <?= $this->linkHashtags($comment['comment']); ?> 
 								</li>
 							<?php endforeach; ?>
 					<?php endif; ?>
 				</ul>
 			</div><!-- ./reacties -->
 			<div class="reageren">
-				<a href="<?=SITE_URL?>/?route=post/like&id=<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="like" data-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>"><i class="fa fa-heart-o"></i></a>
+				<a href="<?=SITE_URL?>/?route=post/like&id=<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="like" data-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>"><i class="fa <?=($this->hasLiked($post['post_id'])) ? 'fa-heart' : 'fa-heart-o'?>"></i></a>
 				<form action="<?=SITE_URL?>/?route=post/comment" method="post">
 				<input type="hidden" value="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="post_id" name="post_id">
 				<input type="text" class="reactie-plaatsen" name="comment" placeholder="Schrijf een reactie..." />

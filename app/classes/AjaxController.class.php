@@ -20,11 +20,22 @@ class AjaxController {
 
 	public function like(){
 		if( isset($_POST['post_id']) ){
-			$result = $this->app->likePost($_POST['post_id']);
 
-			if( $result ){
-				echo 'ok';
-			} 
+			if( $this->app->hasLiked($_POST['post_id']) ){
+				$result = $this->app->unlikePost($_POST['post_id']);
+
+				if( $result ){
+					echo 'ok';
+				}
+			} else {
+
+				$result = $this->app->likePost($_POST['post_id']);
+
+				if( $result ){
+					echo 'ok';
+				} 
+
+			}
 		}
 	}
 }

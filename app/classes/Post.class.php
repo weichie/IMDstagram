@@ -131,7 +131,7 @@
 			$user_id = $this->getUserID();
 			$post_id = $id;
 
-			$query = $this->db->query("DELETE FROM likes WHERE user_id='".$this->db->real_escape_string($user_id)."' AND post_id='".$this->db->real_escape_string($post_id)."');");
+			$query = $this->db->query("DELETE FROM likes WHERE user_id='".$this->db->real_escape_string($user_id)."' AND post_id='".$this->db->real_escape_string($post_id)."'");
 
 			if( $query ){
 				return true;
@@ -142,7 +142,7 @@
 		}
 
 		public function getFeed(){
-			$getFeed = $this->db->query('SELECT *,posts.id AS post_id FROM posts 
+			$getFeed = $this->db->query('SELECT *,posts.id AS post_id, posts.location AS post_location FROM posts 
 										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
 										 INNER JOIN users ON (posts.user_id = users.id)
 										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")
@@ -165,6 +165,18 @@
 			} else {
 				return false;
 			}
+		}
+
+		public function hasLiked($id){
+
+			$query = $this->db->query('SELECT * FROM likes WHERE user_id="'.$this->getUserID().'" AND post_id="'.$this->db->real_escape_string($id).'"');
+
+			if( $query->num_rows ){
+				return true;
+			} else {
+				return false;
+			}
+
 		}
 
 		public function getComments($id, $max=null){
