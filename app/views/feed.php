@@ -11,6 +11,7 @@
 					<strong><a href="<?=SITE_URL?>/?route=user/profile&id=<?=$post['id']?>"><?=$post['username']?></a></strong> 
 				</a>
 				<span class="pull-right"><?=$post['date']?></span>
+				<a href="#!" class="pull-right">Report!</a>
 			</h5>
 		</header>
 
