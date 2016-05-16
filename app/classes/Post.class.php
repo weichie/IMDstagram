@@ -56,6 +56,9 @@
 			$fetch = $query->fetch_assoc();
 
 			if( $query ){
+
+				$fetch['comments'] = $this->getComments($fetch['post_id']);
+
 				return $fetch;
 			} else {
 				trigger_error( $this->db->error );
@@ -110,7 +113,7 @@
 		}
 
 		public function getFeed(){
-			$getFeed = $this->db->query('SELECT * FROM posts 
+			$getFeed = $this->db->query('SELECT *,posts.id AS post_id FROM posts 
 										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
 										 INNER JOIN users ON (posts.user_id = users.id)
 										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")
@@ -120,14 +123,41 @@
 
 			if( $getFeed->num_rows ){
 				$feed = array();
+				$f = array();
 				while($f = $getFeed->fetch_assoc()){
+
+					$f['comments'] = $this->getComments($f['post_id'], 3);
 					$feed[] = $f;
+
 				}
 
 				return $feed;
 			} else {
 				return false;
 			}
+		}
+
+		public function getComments($id, $max=null){
+
+			$limit = (isset($max)) ? 'LIMIT ' . $max : '';
+
+			$getComments = $this->db->query('SELECT * FROM comments INNER JOIN users ON (comments.user_id = users.id) WHERE comments.post_id = "'.$this->db->real_escape_string($id).'" ' . $limit);
+			
+			//echo 'SELECT * FROM comments INNER JOIN users ON (comments.user_id = users.id) WHERE comments.post_id = "'.$this->db->real_escape_string($id).'" ' . $limit;
+
+			if( $getComments->num_rows ){
+
+				$comments = array();
+				while( $c = $getComments->fetch_assoc() ){
+					$comments[] = $c;
+				}
+
+				return $comments;
+
+			} else {
+				return false;
+			}
+
 		}
 
 		public function search($q){
