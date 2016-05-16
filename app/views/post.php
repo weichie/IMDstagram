@@ -13,7 +13,7 @@
 <?php endif; ?>
 
 <?php if( !isset($picture) ): ?>
-	<span class="upload-btn"><i class="fa fa-plus-circle"></i> Selecteer een foto</span>
+	<span class="upload-btn ubtn"><i class="fa fa-plus-circle"></i> Klik hier om een foto te selecteren.</span>
 	<input type="file" name="userfile_post" size="25" style="position: absolute; left: -5000px;" />
 	<input type="hidden" name="type" value="post">
 	
@@ -21,13 +21,13 @@
 <?php else: ?>
 
 <figure id="baseImage" style="max-width:200px">
-	<img src="<?php htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" style="max-width:200px">
+	<img src="<?php echo htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" style="max-width:200px">
 </figure>
 
 <?php endif; ?>
 
 <?php if( isset($id) ): ?>
-	<input type="hidden" value="<?php htmlspecialchars($id, ENT_QUOTES, 'UTF-8'); ?>" name="post_id">
+	<input type="hidden" value="<?php echo htmlspecialchars($id, ENT_QUOTES, 'UTF-8'); ?>" name="post_id">
 <?php endif; ?>
 
 <?php if( isset($picture) ): ?>
@@ -38,9 +38,9 @@
 	foreach( array('nofilter', 'rise', 'mayfair', 'xpro2', 'inkwell', 'earlybird','_1977','aden') as $id => $filter ):
 	?>
 	<li>
-		<figure class="<?php htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'); ?>">
-			<img src="<?php htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" class="smallImage"><br>
-			<input type="radio" <?=($id==0)?'checked="checked"':'';?> name="filter" value="<?php htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'); ?>">
+		<figure class="<?php echo htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'); ?>">
+			<img src="<?php echo htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" class="smallImage"><br>
+			<input type="radio" <?=($id==0)?'checked="checked"':'';?> name="filter" value="<?php echo htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'); ?>">
 		</figure>
 	</li>
 	<?php endforeach; ?>
