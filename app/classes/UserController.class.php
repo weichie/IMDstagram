@@ -17,8 +17,16 @@ class UserController {
 
 	public function login(){
 
-		$this->app->view('login');
+		if(isset($_POST['login'])){
+			$login_message = $app->login($_POST['email'], $_POST['password']);
 
+			$this->app->view('login', array(
+					'login_message' => $login_message
+				)
+			);
+		} else {
+			$this->app->view('login');
+		}
 	}
 
 	public function profile(){
