@@ -202,7 +202,7 @@ class UserController {
 	public function register(){
 
 		if(isset($_POST['register'])){
-			$register_message = $this->app->registration($_POST['email'], $_POST['password']);
+			$register_message = $this->app->registration($_POST['email'], $_POST['username'], $_POST['password']);
 
 			$this->app->view('register', array(
 				'register_message' => $register_message)

@@ -61,7 +61,7 @@
 			return $fetch['count'];
 		}
 
-		public function registration($email, $password){
+		public function registration($email, $username, $password){
 			global $db;
 
 			$options = [
@@ -69,10 +69,10 @@
 			];
 
 			$password = password_hash($password,PASSWORD_DEFAULT, $options);
-			$query = "INSERT INTO users(email, password) VALUES ('$email','$password');";
+			$query = "INSERT INTO users(email, username, password) VALUES ('$email','$username','$password');";
 
 			//staat email al in de database?
-			$controle = "SELECT email, password FROM users WHERE email='$email'";
+			$controle = "SELECT email, username, password FROM users WHERE email='$email'";
 			$qry = $db->query($controle);
 			$result = $qry->fetch_assoc();
 
