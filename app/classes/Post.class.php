@@ -52,7 +52,7 @@
 
 		public function getPost($id){
 
-			$query = $this->db->query('SELECT * FROM posts INNER JOIN users ON (posts.user_id = users.id) WHERE posts.id = "'.$id.'"');
+			$query = $this->db->query('SELECT *, posts.id AS post_id FROM posts INNER JOIN users ON (posts.user_id = users.id) WHERE posts.id = "'.$id.'"');
 			$fetch = $query->fetch_assoc();
 
 			if( $query ){

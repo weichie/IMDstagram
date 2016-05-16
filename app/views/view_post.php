@@ -6,7 +6,7 @@
 				<?=$post['username']?>
 			</a>
 			<span class="pull-right"><?=$this->ago(strtotime($post['date']))?></span>
-			<a href="<?=SITE_URL?>/?route=user/deletePost&id=<?=htmlentities($post['id'])?>" class="pull-right">foto verwijderen?</a>
+			<a href="<?=SITE_URL?>/?route=user/deletePost&id=<?=htmlentities($post['post_id'])?>" class="pull-right">foto verwijderen?</a>
 		</h5>
 	</header>
 
