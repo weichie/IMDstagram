@@ -18,4 +18,13 @@ class AjaxController {
 		}
 	}
 
+	public function like(){
+		if( isset($_POST['post_id']) ){
+			$result = $this->app->likePost($_POST['post_id']);
+
+			if( $result ){
+				echo 'ok';
+			} 
+		}
+	}
 }

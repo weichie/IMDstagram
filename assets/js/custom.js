@@ -30,4 +30,21 @@ $(document).ready(function(){
 			console.log(data);
 		});
 	});
+
+	$('.like').on('click', function(e){
+		e.preventDefault();
+
+		var post_id = $(this).attr('data-id');
+		var $button = $(this);
+
+		$.post(ajax_url+'/like', {
+			'post_id': post_id
+		}, function success(data){
+
+			$button.addClass('liked');
+
+			console.log(data);
+		});
+
+	})
 });
