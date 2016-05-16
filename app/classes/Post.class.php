@@ -91,19 +91,18 @@
 				$id = $this->getUserID();
 			}
 
-			$query = $this->db->query('SELECT count(posts.id) AS count FROM posts WHERE user_id="'.$id.'"');
+			$query = $this->db->query('SELECT count(posts.id) AS count FROM posts WHERE user_id="'.$this->db->real_escape_string($id).'"');
 			$fetch = $query->fetch_assoc();
 			return $fetch['count'];
 		}
 
-		public function deletePost($file){
+		public function deletePost($id){
 			global $db;
 
-			$query = $this->db->query('DELETE FROM posts WHERE id="'.$id.'"');
-			$fetch = $query->fetch_assoc();
+			$query = $this->db->query('DELETE FROM posts WHERE id="'.$this->db->real_escape_string($id).'"');
 
 			if( $query ){
-				return $fetch;
+				return true;
 			} else {
 				trigger_error( $this->db->error );
 				return false;

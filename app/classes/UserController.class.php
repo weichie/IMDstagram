@@ -184,6 +184,21 @@ class UserController {
 
 	}
 
+	public function deletePost(){
+
+		if( !isset($_GET['id']) ){
+			header('Location:' . SITE_URL);
+		}
+
+		$deletePost = $this->app->deletePost($_GET['id']);
+
+		$this->app->view('deletePost', array(
+				'id' => $id
+			)
+		);
+
+	}
+
 	public function register(){
 
 		if(isset($_POST['register'])){
