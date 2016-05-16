@@ -1,32 +1,57 @@
 <?php
 if( isset($_FILES['userfile']['name']) ){
-	try {
-		echo $this->upload( $_FILES['userfile'] );
-	} catch (Exception $e){
-		print_r($e);
+
+	$check = getimagesize($_FILES['userfile']['name']);
+
+	if( $check !== false){
+
+		try {
+			echo $this->upload( $_FILES['userfile'] );
+		} catch (Exception $e){
+			print_r($e);
+		}
+
+	} else {
+		header('Location: ' . SITE_URL . '/?route=user/post');
 	}
 }
 
 if( isset($_FILES['userfile_post']['name']) ){
-	try {
-		$post_image = $this->upload( $_FILES['userfile_post'] );
 
-		echo $post_image;
+	$check = getimagesize($_FILES['userfile_post']['name']);
 
-		header('Location: ' . SITE_URL . '/?route=user/post&id='.$post_image);
+	if( $check !== false){
+		try {
+			$post_image = $this->upload( $_FILES['userfile_post'] );
 
-	} catch (Exception $e){
-		print_r($e);
+			echo $post_image;
+
+			header('Location: ' . SITE_URL . '/?route=user/post&id='.$post_image);
+
+		} catch (Exception $e){
+			print_r($e);
+		}
+	} else {
+		header('Location: ' . SITE_URL . '/?route=user/post');
 	}
 }
 
 if( isset($_FILES['user_avatar']['name']) ){
-	try {
-		$post_image = $this->upload_avatar( $_FILES['user_avatar'] );
 
-		header('Location: ' . SITE_URL . '/?route=user/edit_profile');
+	$check = getimagesize($_FILES['user_avatar']['name']);
 
-	} catch (Exception $e){
-		print_r($e);
+	if( $check !== false){
+
+		try {
+			$post_image = $this->upload_avatar( $_FILES['user_avatar'] );
+
+			header('Location: ' . SITE_URL . '/?route=user/edit_profile');
+
+		} catch (Exception $e){
+			print_r($e);
+		}
+
+	} else {
+		header('Location: ' . SITE_URL . '/?route=user/post');
 	}
 }
