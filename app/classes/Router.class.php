@@ -44,7 +44,7 @@ class Router {
 
 	public function index(){
 		if( $this->app->isLoggedIn() ){
-			header('Location: ' . SITE_URL . '/?route=user/profile');
+			header('Location: ' . SITE_URL . '/?route=user/feed');
 		} else {
 			$controller = new UserController($this->app);
 			$controller->login();
