@@ -13,6 +13,26 @@
 	<div class="image" style="background-image:url('<?=$post['image_url']?>')"></div><!-- ./image -->
 	
 	<div class="bottom">
+		<div class="likes">
+			<ul>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+				<li><a href="#!">Weichie</a></li>
+			</ul>
+		</div><!-- ./likes -->
 		<div class="reacties">
 			<p class="poster">
 				<strong><?=$post['username']?></strong> <?=$this->linkHashtags($post['description'])?>

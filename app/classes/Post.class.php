@@ -110,6 +110,21 @@
 			}
 		}
 
+		public function likePost($id){
+			global $db;
+			$user_id = $this->getUserID();
+			$post_id = $id;
+
+			$query = "INSERT INTO likes(user_id, post_id) VALUES ('$user_id','$post_id');";
+
+			if( $query ){
+				return true;
+			} else {
+				trigger_error( $this->db->error );
+				return false;
+			}
+		}
+
 		public function getFeed(){
 			$getFeed = $this->db->query('SELECT * FROM posts 
 										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
