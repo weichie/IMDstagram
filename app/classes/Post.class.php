@@ -127,6 +127,20 @@
 			}
 		}
 
+		public function unlikePost($id){
+			$user_id = $this->getUserID();
+			$post_id = $id;
+
+			$query = $this->db->query("DELETE FROM likes WHERE user_id='".$this->db->real_escape_string($user_id)."' AND post_id='".$this->db->real_escape_string($post_id)."');");
+
+			if( $query ){
+				return true;
+			} else {
+				trigger_error( $this->db->error );
+				return false;
+			}
+		}
+
 		public function getFeed(){
 			$getFeed = $this->db->query('SELECT *,posts.id AS post_id FROM posts 
 										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
