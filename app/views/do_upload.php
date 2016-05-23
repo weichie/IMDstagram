@@ -1,26 +1,18 @@
 <?php
 if( isset($_FILES['userfile']['name']) ){
 
-	$check = getimagesize($_FILES['userfile']['name']);
-
-	if( $check !== false){
-
-		try {
-			echo $this->upload( $_FILES['userfile'] );
-		} catch (Exception $e){
-			print_r($e);
-		}
-
-	} else {
-		header('Location: ' . SITE_URL . '/?route=user/post');
+	try {
+		echo $this->upload( $_FILES['userfile'] );
+	} catch (Exception $e){
+		print_r($e);
 	}
 }
 
 if( isset($_FILES['userfile_post']['name']) ){
 
-	$check = getimagesize($_FILES['userfile_post']['name']);
+	//$check = getimagesize($_FILES['userfile_post']['name']);
 
-	if( $check !== false){
+	//if( $check !== false){
 		try {
 			$post_image = $this->upload( $_FILES['userfile_post'] );
 
@@ -31,16 +23,16 @@ if( isset($_FILES['userfile_post']['name']) ){
 		} catch (Exception $e){
 			print_r($e);
 		}
-	} else {
+	/*} else {
 		header('Location: ' . SITE_URL . '/?route=user/post');
-	}
+	}*/
 }
 
 if( isset($_FILES['user_avatar']['name']) ){
 
-	$check = getimagesize($_FILES['user_avatar']['name']);
+	/*$check = getimagesize($_FILES['user_avatar']['name']);
 
-	if( $check !== false){
+	if( $check !== false){*/
 
 		try {
 			$post_image = $this->upload_avatar( $_FILES['user_avatar'] );
@@ -51,7 +43,7 @@ if( isset($_FILES['user_avatar']['name']) ){
 			print_r($e);
 		}
 
-	} else {
+	/*} else {
 		header('Location: ' . SITE_URL . '/?route=user/post');
-	}
+	}*/
 }
