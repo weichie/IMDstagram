@@ -205,7 +205,7 @@ header{
 		height: auto;
 
 		.poster{
-			margin-top: 20px;
+			padding-top: 20px;
 		}
 
 		.likes{
@@ -345,12 +345,16 @@ header{
 		padding: 0;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: space-around;
 
 		li{
 			margin-bottom: 25px;
 			width: 290px;
 			height: 290px;
+			
+			figure{
+				height: 100%;
+			}
 
 			img{
 				width: 100%;

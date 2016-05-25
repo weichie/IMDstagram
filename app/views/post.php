@@ -1,4 +1,8 @@
-
+<?php if( isset($message) ): ?>
+<div class="alert alert-warning">
+	<?php htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?>
+</div>
+<?php endif; ?>
 <?php if( !isset($picture) ): ?>
 <h3>Selecteer een foto</h3>
 <?php else: ?>

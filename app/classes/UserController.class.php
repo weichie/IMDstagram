@@ -92,11 +92,16 @@ class UserController {
 
 				if( $post ){
 					header('Location: ' . SITE_URL . '/?route=user/profile');
+				}else{
+					$message = "Gelieve een beschrijving in te vullen.";
 				}
 
 			}
 
-			$this->app->view('post');
+			$this->app->view('post', array(
+					'message' => $message
+				)
+			);
 
 		}
 
