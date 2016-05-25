@@ -186,7 +186,7 @@ header .navbar a:hover {
   height: auto;
 }
 .post .bottom .poster {
-  margin-top: 20px;
+  padding-top: 20px;
 }
 .post .bottom .likes {
   margin: 10px 0;
