@@ -178,6 +178,8 @@ header{
 
 		img{
 			margin-right: 10px;
+			width: 40px;
+			height: 40px;
 			max-width: 40px;
 			max-height: 40px;
 			@include border-radius(50%);
@@ -201,6 +203,10 @@ header{
 		padding-bottom: 10px;
 		padding-left: 20px;
 		height: auto;
+
+		.poster{
+			margin-top: 20px;
+		}
 
 		.likes{
 			margin: 10px 0;
@@ -247,6 +253,10 @@ header{
 			padding-top: 10px;
 			border-top: 1px solid $light-grey;
 			display: flex;
+			
+			form{
+				width: 100%;
+			}
 
 			i{
 				font-size: 2em;

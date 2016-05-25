@@ -48,7 +48,6 @@
 				<div class="collapse navbar-collapse" id="menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?=SITE_URL?>/?route=user/post"><i class="fa fa-pencil-square-o"></i></a></li>
-						<li><a href="#!"><i class="fa fa-heart"></i></a></li>
 						<li><a href="<?=SITE_URL?>/?route=user/profile"><i class="fa fa-user"></i></a></li>
 						<li><a href="<?=SITE_URL?>/?route=user/logout"><i class="fa fa-sign-out"></i></a></li>
 					</ul>

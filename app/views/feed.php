@@ -18,7 +18,7 @@
 		</header>
 
 		<figure class="<?=$post['filter']?>">
-		<div class="image" style="background-image:url('<?=$post['image_url']?>');"></div><!-- ./image -->
+			<div class="image" style="background-image:url('<?=$post['image_url']?>');"></div><!-- ./image -->
 		</figure>
 		
 		<div class="bottom">
@@ -26,7 +26,6 @@
 				<p class="poster">
 					<?=$this->linkHashtags($post['description'])?> <i><?php echo htmlspecialchars($post['post_location'], ENT_QUOTES, 'UTF-8');?></i>
 				</p>
-				<hr>
 				<ul class="comments_<?=$post['post_id']?>">
 					<?php if( !empty($post['comments']) ): ?>
 							<?php foreach($post['comments'] as $comment): ?>
@@ -40,9 +39,9 @@
 			<div class="reageren">
 				<a href="<?=SITE_URL?>/?route=post/like&id=<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="like" data-id="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>"><i class="fa <?=($this->hasLiked($post['post_id'])) ? 'fa-heart' : 'fa-heart-o'?>"></i></a>
 				<form action="<?=SITE_URL?>/?route=post/comment" method="post">
-				<input type="hidden" value="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="post_id" name="post_id">
-				<input type="text" class="reactie-plaatsen" name="comment" placeholder="Schrijf een reactie..." />
-				<input type="submit" class="addComment" data-name="<?=$this->getUsername()?>" value="Post !">
+					<input type="hidden" value="<?php echo htmlspecialchars($post['post_id'], ENT_QUOTES, 'UTF-8'); ?>" class="post_id" name="post_id">
+					<input type="text" class="reactie-plaatsen" name="comment" placeholder="Schrijf een reactie..." />
+					<input type="submit" class="btn btn-default btn-sm addComment pull-right" data-name="<?=$this->getUsername()?>" value="Post !">
 				</form>
 			</div><!-- ./reageren -->
 		</div><!-- ./bottom -->

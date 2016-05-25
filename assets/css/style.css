@@ -158,6 +158,8 @@ header .navbar a:hover {
 }
 .post header img {
   margin-right: 10px;
+  width: 40px;
+  height: 40px;
   max-width: 40px;
   max-height: 40px;
   -webkit-border-radius: 50%;
@@ -182,6 +184,9 @@ header .navbar a:hover {
   padding-bottom: 10px;
   padding-left: 20px;
   height: auto;
+}
+.post .bottom .poster {
+  margin-top: 20px;
 }
 .post .bottom .likes {
   margin: 10px 0;
@@ -221,6 +226,9 @@ header .navbar a:hover {
   padding-top: 10px;
   border-top: 1px solid #ededed;
   display: flex;
+}
+.post .bottom .reageren form {
+  width: 100%;
 }
 .post .bottom .reageren i {
   font-size: 2em;
