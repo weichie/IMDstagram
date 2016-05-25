@@ -318,12 +318,15 @@ header .navbar a:hover {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .acc-uploads ul li {
   margin-bottom: 25px;
   width: 290px;
   height: 290px;
+}
+.acc-uploads ul li figure {
+  height: 100%;
 }
 .acc-uploads ul li img {
   width: 100%;

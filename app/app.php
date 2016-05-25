@@ -29,7 +29,6 @@ $router = new Router( $app, array(
 		'post/comment',
 		'post/like',
 
-
 		// *Ajax functions* //
 		'ajax/comment',
 		'ajax/like'

@@ -6,10 +6,14 @@
 
 			$query = $this->db->query( 'UPDATE posts SET description="'.$this->db->real_escape_string($description).'", location="'.$this->db->real_escape_string($location).'", date = NOW(), filter="'.$this->db->real_escape_string($filter).'" WHERE id="'.$this->db->real_escape_string($picture_id).'" AND user_id="'.$this->getUserID().'" ' );
 
-			if( $query ){
-				return true;
-			} else {
-				trigger_error( $this->db->error );
+			if(!empty($description) && isset($description)){
+				if( $query ){
+					return true;
+				} else {
+					trigger_error( $this->db->error );
+					return false;
+				}
+			}else{
 				return false;
 			}
 
