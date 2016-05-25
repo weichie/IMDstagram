@@ -1,6 +1,6 @@
 <?php if( isset($register_message) ): ?>
 <div class="alert alert-warning">
-	<?php htmlspecialchars($register_message, ENT_QUOTES, 'UTF-8'); ?>
+	<?php echo htmlspecialchars($register_message, ENT_QUOTES, 'UTF-8'); ?>
 </div>
 <?php endif; ?>
 <form action="" method="post" class="login-form">

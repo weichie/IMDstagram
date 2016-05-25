@@ -142,12 +142,23 @@
 		}
 
 		public function getFeed(){
+
+
+
 			$getFeed = $this->db->query('SELECT *,posts.id AS post_id, posts.location AS post_location FROM posts 
 										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
 										 INNER JOIN users ON (posts.user_id = users.id)
 										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")
 										 AND report < 3
 										 ORDER BY posts.date DESC');
+
+			/*echo 'SELECT DISTINCT *,posts.id AS post_id, posts.location AS post_location FROM posts 
+										 LEFT JOIN followers ON (posts.user_id = followers.follower_id)
+										 INNER JOIN users ON (posts.user_id = users.id)
+										 WHERE (followers.user_id="'.$this->getUserID().'" OR posts.user_id="'.$this->getUserID().'")
+										 AND report < 3
+										 ORDER BY posts.date DESC';*/
+
 
 			// Get posts from following and your own.
 

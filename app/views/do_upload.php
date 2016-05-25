@@ -21,7 +21,12 @@ if( isset($_FILES['userfile_post']['name']) ){
 			header('Location: ' . SITE_URL . '/?route=user/post&id='.$post_image);
 
 		} catch (Exception $e){
-			print_r($e);
+			//print_r($e);
+			?>
+			<div class="alert alert-warning">
+				<?php echo htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8'); ?>
+			</div>
+			<?php
 		}
 	/*} else {
 		header('Location: ' . SITE_URL . '/?route=user/post');

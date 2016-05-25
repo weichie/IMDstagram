@@ -1,6 +1,6 @@
 <?php if( isset($login_message) ): ?>
 <div class="alert alert-warning">
-	<?php htmlspecialchars($login_message, ENT_QUOTES, 'UTF-8'); ?>
+	<?php echo htmlspecialchars($login_message, ENT_QUOTES, 'UTF-8'); ?>
 </div>
 <?php endif; ?>
 
@@ -16,13 +16,6 @@
 	<button type="submit" name="login" class="btn btn-primary">Aanmelden</button><br>
 
 	<hr>
-
-	Of login met Facebook: 
-
-	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-<div id="status"></div>
-
 
 <br><br>
 
